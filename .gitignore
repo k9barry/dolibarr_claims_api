@@ -1,5 +1,3 @@
-  
-composer.json  
 src/.env
 src/log/*
 !src/log/.gitkeep 
