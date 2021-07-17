@@ -22,6 +22,7 @@ if (file_exists("./src/.env")) {
 } else {
     echo "Please rename the .env-dev file to .env and change the necessary settings";
     $logger->info("phpDotenv library failed please rename the .env-dev file to .env and change the necessary settings");
+    exit();
 }
 
 // Include all needed files
