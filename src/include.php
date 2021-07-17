@@ -13,11 +13,16 @@ $logger->pushHandler(new RotatingFileHandler("./src/log/claim.log", Logger::DEBU
 $logger->pushProcessor(new IntrospectionProcessor());
 $logger->info('Claim logger is now ready'); // You can now use your logger
 
-// Load phpdotenv variables
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
-$dotenv->load();
-$dotenv->required(['apiKey', 'apiUrl']);
-$logger->info("phpDotenv library loaded \r\n");
+// Load phpdotenv variables if exists
+if (file_exists("./src/.env")) {
+    $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+    $dotenv->load();
+    $dotenv->required(['apiKey', 'apiUrl']);
+    $logger->info("phpDotenv library loaded \r\n");
+} else {
+    echo "Please rename the .env-dev file to .env and change the necessary settings";
+    $logger->info("phpDotenv library failed please rename the .env-dev file to .env and change the necessary settings");
+}
 
 // Include all needed files
 foreach (glob("./src/functions/fcn_*.php") as $filename)
