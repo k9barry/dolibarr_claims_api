@@ -6,7 +6,7 @@ include 'src/include.php';
 
 // GET supplier invoices sorted by fk_soc with status of unpaid
 $arrAllUnpaidInvoices = fcn_getAllUnpaidInvoices($logger, $apiKey, $apiUrl);
-$logger->info("arrAllUnpaidInvoices = " . json_encode($arrAllUnpaidInvoices));
+//$logger->info("arrAllUnpaidInvoices = " . json_encode($arrAllUnpaidInvoices));
 
 // Count of unpaid supplier invoices by supplier id
 $arrSupplierInvoiceCount = fcn_asscArrayCountValue($arrAllUnpaidInvoices, 'socid');
@@ -17,7 +17,7 @@ $logger->info("Unset arrAllUnpaidInvoices to clean stuff up");
 
 // Returns an array of vendor Id's with unpaid supplier invoices
 $arrVendorIdSupplierUnpaid = array_keys($arrSupplierInvoiceCount);
-$logger->info("arrVendorIdSupplierUnpaid is vendor Id's with unpaid supplier invoices = " . json_encode($arrVendorIdSupplierUnpaid));
+$logger->info("arrVendorIdSupplierUnpaid = vendor Id's with unpaid supplier invoices " . json_encode($arrVendorIdSupplierUnpaid));
 
 foreach ($arrVendorIdSupplierUnpaid as $vendorID) {
     // Step 1 - create PDF array of information
@@ -39,3 +39,4 @@ $logger->info("claims.pdf merge file sent to browser");
 // Step 6 - unset $arrVendorIdSupplierUnpaid to clean stuff up
 unset($arrVendorIdSupplierUnpaid);
 $logger->info("Unset array arrVendorIdSupplierUnpaid to clean things up");
+$logger->info('+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++');

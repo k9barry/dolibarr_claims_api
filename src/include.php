@@ -16,6 +16,7 @@ use Monolog\Processor\IntrospectionProcessor;
 $logger = new Logger('claim_logger'); // Create the logger
 $logger->pushHandler(new RotatingFileHandler("./src/log/claim.log", Logger::DEBUG)); // Adds RotatingFileHandler
 $logger->pushProcessor(new IntrospectionProcessor());
+$logger->info('+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++');
 $logger->info('Claim logger is now ready'); // You can now use your logger
 
 // Load phpdotenv variables if exists

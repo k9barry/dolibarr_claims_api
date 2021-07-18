@@ -5,7 +5,7 @@
 function fcn_createPDFArray($logger, $apiKey, $apiUrl, $vendorID, $signature, $title)
 {
 
-    $logger->info("Step 1 - create PDf array started");
+    $logger->info("Vendor " . $vendorID . " - create PDf array started");
     // GET supplier information
     $arr_supplierInfo = fcn_getSupplierInfo($logger, $apiKey, $apiUrl, $vendorID);
     $arr_vendor = array(
@@ -16,18 +16,18 @@ function fcn_createPDFArray($logger, $apiKey, $apiUrl, $vendorID, $signature, $t
         'VendZip' => $arr_supplierInfo['zip'],
         'VendCode' => $arr_supplierInfo['code_fournisseur']
     );
-    $logger->info("arr_vendor = " . json_encode($arr_vendor));
+    $logger->info("Vendor " . $vendorID . " - arr_vendor = " . json_encode($arr_vendor));
 
 
     // GET bank account details
-    $logger->info("Step 1 - get bank accounts information");
+    $logger->info("Vendor " . $vendorID . " - Get bank accounts information");
     $arr_bankAccounts = fcn_getBankAccounts($logger, $apiKey, $apiUrl);
     $arr_filteredBankAccount = array_column($arr_bankAccounts, 'label', 'id');
-    $logger->info("arr_filteredBankAccount = " . json_encode($arr_filteredBankAccount));
+    $logger->info("Vendor " . $vendorID . " - arr_filteredBankAccount = " . json_encode($arr_filteredBankAccount));
 
 
     // GET invoice details
-    $logger->info("Step 1 - get invoice details");
+    $logger->info("Vendor " . $vendorID . " - get invoice details");
     $arr_filteredInvoiceInfo = fcn_getInvoiceInfo($logger, $apiKey, $apiUrl, $vendorID);
     for ($i = 0; $i < count($arr_filteredInvoiceInfo); $i++) {
         $arr_inv_detail[$i] = array(
@@ -41,23 +41,23 @@ function fcn_createPDFArray($logger, $apiKey, $apiUrl, $vendorID, $signature, $t
             "Bank" => search($arr_bankAccounts, 'id', $arr_filteredInvoiceInfo[$i]['fk_account'])
         );
     }
-    $logger->info("arr_inv_detail = " . json_encode($arr_inv_detail));
+    $logger->info("Vendor " . $vendorID . " - all invoice details " . json_encode($arr_inv_detail));
 
 
     // GET current date, signature image path, and title
-    $logger->info("Step 1 - get date, signature image path, and title information");
+    $logger->info("Vendor " . $vendorID . " - get date, signature image path, and title information");
     $arr_signature = array(
         'ClaimDate' => date('m/d/Y', time()),
         'ClaimSig' => $signature,
         'ClaimTitle' => substr($title, 0, 25)
     );
-    $logger->info("arr_signature = " . json_encode($arr_signature));
+    $logger->info("Vendor " . $vendorID . " - arr_signature path = " . json_encode($arr_signature));
 
 
     // Join arrays to send to next function
-    $logger->info("Step 1 - merge the arrays into arr_print");
+    $logger->info("Vendor " . $vendorID . " - merge the arrays into arr_print");
     $arr_print = $arr_vendor + $arr_inv_detail + $arr_signature + $arr_filteredBankAccount;
-    $logger->info("arr_print = " . json_encode($arr_print));
+    $logger->info("Vendor " . $vendorID . " arr_print = " . json_encode($arr_print));
 
     // Cleanup arrays
     unset($arr_vendor);
@@ -65,7 +65,7 @@ function fcn_createPDFArray($logger, $apiKey, $apiUrl, $vendorID, $signature, $t
     unset($arr_filteredInvoiceInfo);
     unset($arr_signature);
     unset($arr_filteredBankAccount);
-    $logger->info("Step 1 - cleanup arrays no longer needed");
+    $logger->info("Vendor " . $vendorID . " - cleanup arrays no longer needed");
 
     return $arr_print;
 }

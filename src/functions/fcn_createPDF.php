@@ -3,7 +3,7 @@
 function fcn_createPDF($logger, $apiKey, $apiUrl, $arr_print)
 {
 
-  $logger->info("Step 2 - create PDf");
+  $logger->info("Vendor " . $arr_print['VendName'] . " - create PDf");
   /* 
   // Full array print of $arr_print
   echo "<br><br>Full array - arr_print<br>";
@@ -320,22 +320,23 @@ echo "<br><br>";
  */
 
   // Print individual pdf
-  include('inc_PDF_Content.php');
+  include('inc_PDF_Content_1.php');
+  include('inc_PDF_Content_2.php');
 
   // Create single pdf file 
   $pdfFileName = "CLAIM-" . $vendName . ".pdf";
   $pdfPathFile = __DIR__ . "\\tmp\\" . $pdfFileName;
   echo "pdfFilePath = $pdfPathFile<br><br>";
   $pdf->Output($pdfPathFile, "F");
-  $logger->info("Step 2 - PDF claim created at = " . $pdfPathFile);
+  $logger->info("PDF claim created at = " . $pdfPathFile);
 
   //ob_end_clean();
   $attachment = $pdf->Output($pdfFileName, "E");
-  $logger->info("Step 2 - base64 encoded PDF claim created with name of = " . $pdfFileName);
+  $logger->info("Base64 encoded PDF claim created with name of = " . $pdfFileName);
 
   // get invID numbers included in this claim
   $invIDNumbersInClaim = array_column($arr_print, 'InvID');
-  $logger->info("Step 2 - Invoice ID numbers paid in this claim = " . json_encode($invIDNumbersInClaim));
+  $logger->info("Invoice ID numbers paid in this claim = " . json_encode($invIDNumbersInClaim));
 
   //get level1name from fcn_getDocuments for each invID in claim and post claim PDF to that invoice then mark as PAID
   foreach ($invIDNumbersInClaim as $invoiceID) {
@@ -346,10 +347,10 @@ echo "<br><br>";
 
     // POST pdf file to dolibarr api
     fcn_postPDFDocument($logger, $apiKey, $apiUrl, $pdfFileName, "supplier_invoice", $ref, $attachment);
-    $logger->info("Step 2 - claim " . $pdfFileName ." added to supplier invoice reference " . $ref);
+    $logger->info("Claim " . $pdfFileName ." added to " . $ref);
 
     //  Mark supplier invoice as PAID
 //    fcn_postSupplierPayment($logger, $apiKey, $apiUrl, $invoiceID);
-    $logger->info("Step 2 - supplier invoice ID " . $invoiceID ." marked as PAID = ");
+    $logger->info("Supplier invoice ID " . $invoiceID ." marked as PAID = ");
   }
 }
