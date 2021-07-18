@@ -327,9 +327,10 @@ echo "<br><br>";
   $pdfPathFile = __DIR__ . "\\tmp\\" . $pdfFileName;
   echo "pdfFilePath = $pdfPathFile<br><br>";
   $pdf->Output($pdfPathFile, "F");
-
-  $attachment = $pdf->Output($pdfFileName, "E");
   $logger->info("Step 2 - PDF claim created at = " . $pdfPathFile);
+
+  //ob_end_clean();
+  $attachment = $pdf->Output($pdfFileName, "E");
 
   // get invID numbers included in this claim
   $invIDNumbersInClaim = array_column($arr_print, 'InvID');
@@ -346,7 +347,7 @@ echo "<br><br>";
     // POST pdf file to dolibarr api
     fcn_postPDFDocument($logger, $apiKey, $apiUrl, $pdfFileName, "supplier_invoice", $ref, $attachment);
     $logger->info("Step 2 - claim PDF added to supplier invoice = " . $ref);
-
+exit();
     //  Mark supplier invoice as PAID
     fcn_postSupplierPayment($logger, $apiKey, $apiUrl, $invoiceID);
     $logger->info("Step 2 - supplier invoice marked as PAID = " . $ref);

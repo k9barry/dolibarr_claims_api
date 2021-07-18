@@ -24,8 +24,9 @@ function fcn_createPDFArray($logger, $apiKey, $apiUrl, $vendorID, $signature, $t
     $arr_filteredBankAccount = array_column($arr_bankAccounts, 'label', 'id');
 
     // GET invoice details
-    $logger->info("Step 1 - get invoice details");
+    $logger->info("Step 1 - get invoice details");   
     $arr_filteredInvoices = fcn_getSupplierInvoices($logger, $apiKey, $apiUrl, $vendorID);
+    var_dump($arr_filteredInvoices);
     for ($i = 0; $i < count($arr_filteredInvoices); $i++) {
         $arr_inv_detail[$i] = array(
             "InvID" => $arr_filteredInvoices[$i]['id'],
