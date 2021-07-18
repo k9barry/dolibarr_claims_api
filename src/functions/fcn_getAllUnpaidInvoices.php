@@ -17,5 +17,6 @@ function fcn_getAllUnpaidInvoices($logger, $apiKey, $apiUrl)
 		$logger->critical(json_encode($arrAllUnpaidInvoices));
         exit;
 	}
+
 	return $arrAllUnpaidInvoices;
 }

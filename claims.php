@@ -6,17 +6,20 @@ include 'src/include.php';
 
 // GET supplier invoices sorted by fk_soc with status of unpaid
 $arrAllUnpaidInvoices = fcn_getAllUnpaidInvoices($logger, $apiKey, $apiUrl);
-$logger->info("arrAllUnpaidInvoices = ".json_encode($arrAllUnpaidInvoices));
+$logger->info("arrAllUnpaidInvoices = " . json_encode($arrAllUnpaidInvoices));
 
 // Count of unpaid supplier invoices by supplier id
-$arrSupplierInvoiceId = fcn_asscArrayCountValue($arrAllUnpaidInvoices, 'socid');
-$logger->info("arrSupplierInvoiceId = ".json_encode($arrSupplierInvoiceId));
+$arrSupplierInvoiceCount = fcn_asscArrayCountValue($arrAllUnpaidInvoices, 'socid');
+$logger->info("arrSupplierInvoiceCount = " . json_encode($arrSupplierInvoiceCount));
 
 unset($arrAllUnpaidInvoices);  // unset $arrAllUnpaidInvoices to clean stuff up
 $logger->info("Unset arrAllUnpaidInvoices to clean stuff up");
 
-$supplierInvoiceId = array_keys($arrSupplierInvoiceId);
-foreach ($supplierInvoiceId as $vendorID) {
+// Returns an array of vendor Id's with unpaid supplier invoices
+$arrVendorIdSupplierUnpaid = array_keys($arrSupplierInvoiceCount);
+$logger->info("arrVendorIdSupplierUnpaid is vendor Id's with unpaid supplier invoices = " . json_encode($arrVendorIdSupplierUnpaid));
+
+foreach ($arrVendorIdSupplierUnpaid as $vendorID) {
     // Step 1 - create PDF array of information
     $arr_print = fcn_createPDFArray($logger, $apiKey, $apiUrl, $vendorID, $signature, $title);
 
@@ -27,11 +30,12 @@ foreach ($supplierInvoiceId as $vendorID) {
     // Step 3 - unset $arr_print to clean stuff up
     unset($arr_print);
     $logger->info("Unset arr_print to clean things up");
-    
-    // Step 4 - Merge all pdf's in tmp folder into one big browser view to print then unlink
-    fcn_mergeTmpFolderPDFs($logger);
-
 }
-// Step 6 - unset $supplierInvoiceId to clean stuff up
-unset($supplierInvoiceId);
-$logger->info("Unset array supplierInvoiceId to clean things up");
+
+// Step 4 - Merge all pdf's in tmp folder into one big browser view to print then unlink
+fcn_mergeTmpFolderPDFs($logger);
+$logger->info("claims.pdf merge file sent to browser");
+
+// Step 6 - unset $arrVendorIdSupplierUnpaid to clean stuff up
+unset($arrVendorIdSupplierUnpaid);
+$logger->info("Unset array arrVendorIdSupplierUnpaid to clean things up");
