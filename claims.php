@@ -26,11 +26,12 @@ foreach ($supplierInvoiceId as $vendorID) {
 
     // Step 3 - unset $arr_print to clean stuff up
     unset($arr_print);
-
+    $logger->info("Unset arr_print to clean things up");
+    
     // Step 4 - Merge all pdf's in tmp folder into one big browser view to print then unlink
     fcn_mergeTmpFolderPDFs($logger);
 
 }
 // Step 6 - unset $supplierInvoiceId to clean stuff up
 unset($supplierInvoiceId);
-$logger->info("Unset array supplierInvliceId to clean things up");
+$logger->info("Unset array supplierInvoiceId to clean things up");

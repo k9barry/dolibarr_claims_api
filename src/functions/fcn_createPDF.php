@@ -331,7 +331,7 @@ echo "<br><br>";
 
   //ob_end_clean();
   $attachment = $pdf->Output($pdfFileName, "E");
-  $logger->info("Step 2 - base64 encoded PDF claim created with name of = " . $pdfPathName);
+  $logger->info("Step 2 - base64 encoded PDF claim created with name of = " . $pdfFileName);
 
   // get invID numbers included in this claim
   $invIDNumbersInClaim = array_column($arr_print, 'InvID');
@@ -349,7 +349,7 @@ echo "<br><br>";
     $logger->info("Step 2 - claim " . $pdfFileName ." added to supplier invoice reference " . $ref);
 
     //  Mark supplier invoice as PAID
-    fcn_postSupplierPayment($logger, $apiKey, $apiUrl, $invoiceID);
+//    fcn_postSupplierPayment($logger, $apiKey, $apiUrl, $invoiceID);
     $logger->info("Step 2 - supplier invoice ID " . $invoiceID ." marked as PAID = ");
   }
 }

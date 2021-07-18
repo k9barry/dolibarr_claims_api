@@ -5,16 +5,20 @@ use Jmleroux\PDFMerger\PDFMerger;
 
 function fcn_mergeTmpFolderPDFs($logger) 
 {
-    require_once(getcwd() . '\vendor\jmleroux\pdf-merger\src\PDFMerger.php');
-
+    $PDFMergerPath = "./vendor/jmleroux/pdf-merger/src/PDFMerger.php";
+    if (!file_exists($PDFMergerPath)) {
+        echo "file does not exist";
+    }
+    require_once($PDFMergerPath);
     $pdf = new PDFMerger('fpdf');
     
     //include all needed files
     foreach (glob("./src/functions/tmp/*.pdf") as $filename) {
         $pdf->addPDF("$filename", "1", "P");
         $pdf->addPDF("$filename", "2", "L");
+        echo "<br>$filename<br>";
     }
-
+exit();
     //$pdf->addPDF('samplepdfs/one.pdf', '1, 3, 4');
     //$pdf->addPDF('samplepdfs/two.pdf', '1-2');
     //$pdf->addPDF('samplepdfs/three.pdf', 'all');
