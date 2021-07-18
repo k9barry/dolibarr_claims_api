@@ -5,13 +5,17 @@ error_reporting(E_ALL & ~E_NOTICE);
 include 'src/include.php';
 
 // GET supplier invoices sorted by fk_soc with status of unpaid
-$arrUnpaidInvoices = fcn_getSupplierInvoices($logger, $apiKey, $apiUrl);
+$arrAllUnpaidInvoices = fcn_getAllUnpaidInvoices($logger, $apiKey, $apiUrl);
+$logger->info("arrAllUnpaidInvoices = ".json_encode($arrAllUnpaidInvoices));
 
 // Count of unpaid supplier invoices by supplier id
-$supplierInvoiceId = fcn_asscArrayCountValue($arrUnpaidInvoices, 'socid');
-unset($arrUnpaidInvoices);  // unset $arrUnpaidInvoices to clean stuff up
+$arrSupplierInvoiceId = fcn_asscArrayCountValue($arrAllUnpaidInvoices, 'socid');
+$logger->info("arrSupplierInvoiceId = ".json_encode($arrSupplierInvoiceId));
 
-$supplierInvoiceId = array_keys($supplierInvoiceId);
+unset($arrAllUnpaidInvoices);  // unset $arrAllUnpaidInvoices to clean stuff up
+$logger->info("Unset arrAllUnpaidInvoices to clean stuff up");
+
+$supplierInvoiceId = array_keys($arrSupplierInvoiceId);
 foreach ($supplierInvoiceId as $vendorID) {
     // Step 1 - create PDF array of information
     $arr_print = fcn_createPDFArray($logger, $apiKey, $apiUrl, $vendorID, $signature, $title);
