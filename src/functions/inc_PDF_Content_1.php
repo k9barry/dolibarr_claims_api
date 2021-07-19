@@ -57,9 +57,7 @@
   $tbl = <<<EOD
   <table border="0.5" cellpadding="4" cellspacing="0.5" nobr="true">
   <tr>
-    <th align="center" colspan="2">
-      <h3>Payee</h3>
-    </th>
+    <th align="center" colspan="2"><h3>Payee</h3></th>
     <th colspan="2"></th>
   </tr>
   <tr>
@@ -182,12 +180,12 @@ EOD;
   ____________________,________                              ________________________________________________________________';
   $txt .= '                                            Date                                                                                                             County Auditor';
   $pdf->Write(0, $txt, '', 0, 'L', true, 0, false, false, 0);
-  $pdf->Line(33, 163, 57, 163,);  //Date line
-  $pdf->Line(73, 163, 135, 163,);  //Signature line
-  $pdf->Line(148, 163, 190, 163,);  //Title line
+  $pdf->Line(33, 157, 57, 157,);  //Date line
+  $pdf->Line(73, 157, 135, 157,);  //Signature line
+  $pdf->Line(148, 157, 190, 157,);  //Title line
   $pdf->SetLineWidth(0.1);
-  $pdf->Line(16, 190, 190, 190,);
-  $pdf->Image($claimSignature, 70, 154.5, 60, '', '', '', '', false, 300);
+  $pdf->Line(16, 189, 190, 189,);  //Cut line
+  $pdf->Image($claimSignature, 70, 148, 60, '', '', '', '', false, 300); //Signature image
 
 
   

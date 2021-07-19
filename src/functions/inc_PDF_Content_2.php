@@ -9,11 +9,11 @@
 
   $pdf->Ln(15);
 
-  $pdf->Line(18, 51, 90, 51,); //Vendor name
-  $pdf->Line(18, 55, 90, 55,); //Vendor address
-  $pdf->Line(18, 59, 90, 59,); //City State Zip
-  $pdf->Line(18, 67, 90, 67,); //Total
-  $pdf->Line(18, 82.5, 90, 82.5,); //Appropriation
+  $pdf->Line(12, 51, 80, 51,); //Vendor name
+  $pdf->Line(12, 55, 80, 55,); //Vendor address
+  $pdf->Line(12, 59, 80, 59,); //City State Zip
+  $pdf->Line(12, 67, 80, 67,); //Total
+  $pdf->Line(12, 82.5, 80, 82.5,); //Appropriation
 
   $tbl = <<<EOD
   <table align="left" width="30%" border="0" cellpadding="0" cellspacing="" nobr="true">
