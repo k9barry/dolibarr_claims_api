@@ -34,7 +34,7 @@ function fcn_createPDFArray($logger, $apiKey, $apiUrl, $vendorID, $signature, $t
             "InvID" => $arr_filteredInvoiceInfo[$i]['id'],
             "InvDate" => date('m/d/Y', $arr_filteredInvoiceInfo[$i]['datec']),
             "InvRef" => substr($arr_filteredInvoiceInfo[$i]['ref_supplier'], 0, 25),
-            "InvNote" => substr($arr_filteredInvoiceInfo[$i]['note_public'], 0, 41),
+            "InvNote" => substr($arr_filteredInvoiceInfo[$i]['note_public'], 0, 38),
             "InvAmt" => substr($arr_filteredInvoiceInfo[$i]['total_ttc'], 0, -6),
             "InvFundID" => $arr_filteredInvoiceInfo[$i]['fk_account'],
             // use $arr_filteredInvoiceInfo[$i]['fk_account'] to get InvFundLabel and InvFundNumber
