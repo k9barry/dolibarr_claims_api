@@ -36,6 +36,9 @@
     $pdf->setLanguageArray($l);
   }
 
+  // set pdf viewer preferences
+  $pdf->setViewerPreferences(array('Duplex' => 'DuplexFlipShortEdge'));
+
   // First page--------------------------------------------------------- //
   $pdf->AddPage($orientation = 'P', $format = 'LETTER');
 
