@@ -26,7 +26,7 @@ function fcn_postSupplierPayment ($logger, $apiKey, $apiUrl, $invoiceID) {
     $arrSupplierInvoicePaid = json_decode($arrSupplierInvoicePaid, true);
 
     if (isset($arrSupplierInvoicePaid["error"]) && $arrSupplierInvoicePaid["error"]["code"] >= "300") {
-        echo "<br><br>Error in fcn_postSupplierPayment<br><br>";
+        echo "<br><br>Error in fcn_postSupplierPayment - ". json_encode($arrSupplierInvoicePaid["error"]["message"]);
 		$logger->critical(json_encode($arrSupplierInvoicePaid));
         exit;
 	}

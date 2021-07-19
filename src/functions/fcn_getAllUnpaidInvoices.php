@@ -13,7 +13,7 @@ function fcn_getAllUnpaidInvoices($logger, $apiKey, $apiUrl)
     $arrAllUnpaidInvoices = json_decode($arrAllUnpaidInvoices, true);
 
     if (isset($arrAllUnpaidInvoices["error"]) && $arrAllUnpaidInvoices["error"]["code"] >= "300") {
-        echo "<br><br>No UNPAID supplier invoices found - Error in fcn_getSupplierInvoices<br><br>";
+        echo "<br><br>No UNPAID supplier invoices found - ". json_encode($arrAllUnpaidInvoices["error"]["message"]);
 		$logger->critical(json_encode($arrAllUnpaidInvoices));
         exit;
 	}

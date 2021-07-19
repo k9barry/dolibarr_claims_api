@@ -14,7 +14,7 @@ function fcn_getClaimPymtTypeID($logger, $apiKey, $apiUrl)
 	$getClaimPymtID = json_decode($getClaimPymtID, true);
 
 	if (isset($getClaimPymtID["error"]) && $getClaimPymtID["error"]["code"] >= "300") {
-		echo "<br><br>Error in fcn_getClaimPymtTypeID<br><br>";
+		echo "<br><br>Error in fcn_getClaimPymtTypeID - ". json_encode($getClaimPymtID["error"]["message"]);
 		$logger->critical(json_encode($getClaimPymtID));
 		exit;
 	}

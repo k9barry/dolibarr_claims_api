@@ -10,7 +10,7 @@ function fcn_getDocument($logger, $apiKey, $apiUrl, $modulepart, $id)
     $arrDocumentInfo = json_decode($arrDocumentInfo, true);
 
     if (isset($arrDocumentInfo["error"]) && $arrDocumentInfo["error"]["code"] >= "300") {
-        echo "<br><br>Error in fcn_getDocument<br><br>";
+        echo "<br><br>Error in fcn_getDocument - ". json_encode($arrDocumentInfo["error"]["message"]);
 		$logger->critical(json_encode($arrDocumentInfo));
         exit;
 	}
