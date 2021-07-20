@@ -18,7 +18,7 @@ function fcn_createPDFArray($logger, $apiKey, $apiUrl, $vendorID, $signature, $t
     );
     $logger->info("Vendor " . $vendorID . " - arr_vendor = " . json_encode($arr_vendor));
 
-    
+
     // GET invoice details
     $logger->info("Vendor " . $vendorID . " - get individual invoice details");
     $arr_filteredInvoiceInfo = fcn_getInvoiceInfo($logger, $apiKey, $apiUrl, $vendorID);
@@ -55,7 +55,7 @@ function fcn_createPDFArray($logger, $apiKey, $apiUrl, $vendorID, $signature, $t
     // Join arrays to send to next function
     $arr_print = $arr_vendor + $arr_inv_detail + $arr_signature;
     $logger->info("Vendor " . $vendorID . " - merge the arrays into arr_print");
-    //$logger->info("Vendor " . $vendorID . " arr_print = " . json_encode($arr_print));
+    $logger->info("Vendor " . $vendorID . " $arr_print = " . json_encode($arr_print));
 
     // Cleanup arrays
     unset($arr_vendor);

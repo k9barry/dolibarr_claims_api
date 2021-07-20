@@ -18,104 +18,88 @@ function fcn_createPDF($logger, $apiKey, $apiUrl, $arr_print)
   $vendZip = '';
   $vendCode = '';
 
-  $invID0 = '';
   $invDate0 = '';
   $invRef0 = '';
   $invNote0 = '';
   $invAmount0 = '';
-  $invFundID0 = '';
-  $invFundNumber0 = '';
-  $invFundName0 = '';
+  $subKey0 = '';
+  $subValue0 = '';
+  $subNumber0 = '';
 
-  $invID1 = '';
   $invDate1 = '';
   $invRef1 = '';
   $invNote1 = '';
   $invAmount1 = '';
-  $invFundID1 = '';
-  $invFundNumber1 = '';
-  $invFundName1 = '';
+  $subKey1 = '';
+  $subValue1 = '';
+  $subNumber1 = '';
 
-  $invID2 = '';
   $invDate2 = '';
   $invRef2 = '';
   $invNote2 = '';
   $invAmount2 = '';
-  $invFundID2 = '';
-  $invFundNumber2 = '';
-  $invFundName2 = '';
+  $subKey2 = '';
+  $subValue2 = '';
+  $subNumber2 = '';
 
-  $invID3 = '';
   $invDate3 = '';
   $invRef3 = '';
   $invNote3 = '';
   $invAmount3 = '';
-  $invFundID3 = '';
-  $invFundNumber3 = '';
-  $invFundName3 = '';
+  $subKey3 = '';
+  $subValue3 = '';
+  $subNumber3 = '';
 
-  $invID4 = '';
   $invDate4 = '';
   $invRef4 = '';
   $invNote4 = '';
   $invAmount4 = '';
-  $invFundID4 = '';
-  $invFundNumber4 = '';
-  $invFundName4 = '';
+  $subKey4 = '';
+  $subValue4 = '';
+  $subNumber4 = '';
 
-  $invID5 = '';
   $invDate5 = '';
   $invRef5 = '';
   $invNote5 = '';
   $invAmount5 = '';
-  $invFundID5 = '';
-  $invFundNumber5 = '';
-  $invFundName5 = '';
+  $subKey5 = '';
+  $subValue5 = '';
+  $subNumber5 = '';
 
-  $invID6 = '';
   $invDate6 = '';
   $invRef6 = '';
   $invNote6 = '';
   $invAmount6 = '';
-  $invFundID6 = '';
-  $invFundNumber6 = '';
-  $invFundName6 = '';
+  $subKey6 = '';
+  $subValue6 = '';
+  $subNumber6 = '';
 
-  $invID7 = '';
   $invDate7 = '';
   $invRef7 = '';
   $invNote7 = '';
   $invAmount7 = '';
-  $invFundID7 = '';
-  $invFundNumber7 = '';
-  $invFundName7 = '';
+  $subKey7 = '';
+  $subValue7 = '';
+  $subNumber7 = '';
 
-  $invID8 = '';
   $invDate8 = '';
   $invRef8 = '';
   $invNote8 = '';
   $invAmount8 = '';
-  $invFundID8 = '';
-  $invFundNumber8 = '';
-  $invFundName8 = '';
+  $subKey8 = '';
+  $subValue8 = '';
+  $subNumber8 = '';
 
-  $invID9 = '';
   $invDate9 = '';
   $invRef9 = '';
   $invNote9 = '';
   $invAmount9 = '';
-  $invFundID9 = '';
-  $invFundNumber9 = '';
-  $invFundName9 = '';
 
   $claimDate = '';
   $claimSignature = '';
   $claimTitle = '';
+
   $total = '0';
-  $appropriation = '';
-  $invFundNumber99 = '';
-  $invFundName99 = '';
-  $invAmount99 = '';
 
   //Fill variables
   $vendName = $arr_print['VendName'];
@@ -125,25 +109,12 @@ function fcn_createPDF($logger, $apiKey, $apiUrl, $arr_print)
   $vendZip = $arr_print['VendZip'];
   $vendCode = $arr_print['VendCode'];
 
-  /* 
-  echo "<br><br>";
-  print_r($arr_print[0]);
-  echo "<br><br>";
- */
-
-  $invID0 = $arr_print[0]['InvID'];
   $invDate0 = $arr_print[0]['InvDate'];
   $invRef0 = $arr_print[0]['InvRef'];
   $invNote0 = $arr_print[0]['InvNote'];
   $invAmount0 = $arr_print[0]['InvAmt'];
-  $invFundID0 = $arr_print[0]['InvFundID'];
-  $invFundNumber0 = $arr_print[0]['InvFundNumber'];
-  $invFundName0 = $arr_print[0]['InvFundLabel'];
-
-  $appropriation = $arr_print[0]['InvFundLabel'];
 
   echo "<br>";
-  echo "$invID0";
   echo "<br>";
   echo "$invDate0";
   echo "<br>";
@@ -153,107 +124,60 @@ function fcn_createPDF($logger, $apiKey, $apiUrl, $arr_print)
   echo "<br>";
   echo "$invAmount0";
   echo "<br>";
-  echo "$invFundID0";
-  echo "<br>";
-  echo "$invFundNumber0";
-  echo "<br>";
-  echo "$invFundName0";
-  echo "<br>";
 
-  if (!empty($arr_print[1]['InvID'])) {
-    $invID1 = $arr_print[1]['InvID'];
+  if (!empty($arr_print[1]['InvDate'])) {
     $invDate1 = $arr_print[1]['InvDate'];
     $invRef1 = $arr_print[1]['InvRef'];
     $invNote1 = $arr_print[1]['InvNote'];
     $invAmount1 = $arr_print[1]['InvAmt'];
-    $invFundID1 = $arr_print[1]['InvFundID'];
-    $invFundNumber1 = $arr_print[1]['InvFundNumber'];
-    $invFundName1 = $arr_print[1]['InvFundLabel'];
-
-    $appropriation = 'See Table Below';
-    $invFundNumber99 = $arr_print[0]['InvFundNumber'];
-    $invFundName99 = $arr_print[0]['InvFundLabel'];
-    $invAmount99 = $arr_print[0]['InvAmt'];
   }
-  if (!empty($arr_print[2]['InvID'])) {
-    $invID2 = $arr_print[2]['InvID'];
+
+  if (!empty($arr_print[2]['InvDate'])) {
     $invDate2 = $arr_print[2]['InvDate'];
     $invRef2 = $arr_print[2]['InvRef'];
     $invNote2 = $arr_print[2]['InvNote'];
     $invAmount2 = $arr_print[2]['InvAmt'];
-    $invFundID2 = $arr_print[2]['InvFundID'];
-    $invFundNumber2 = $arr_print[2]['InvFundNumber'];
-    $invFundName2 = $arr_print[2]['InvFundLabel'];
   }
-  if (!empty($arr_print[3]['InvID'])) {
-    $invID3 = $arr_print[3]['InvID'];
+  if (!empty($arr_print[3]['InvDate'])) {
     $invDate3 = $arr_print[3]['InvDate'];
     $invRef3 = $arr_print[3]['InvRef'];
     $invNote3 = $arr_print[3]['InvNote'];
     $invAmount3 = $arr_print[3]['InvAmt'];
-    $invFundID3 = $arr_print[3]['InvFundID'];
-    $invFundNumber3 = $arr_print[3]['InvFundNumber'];
-    $invFundName3 = $arr_print[3]['InvFundLabel'];
   }
-  if (!empty($arr_print[4]['InvID'])) {
-    $invID4 = $arr_print[4]['InvID'];
+  if (!empty($arr_print[4]['InvDate'])) {
     $invDate4 = $arr_print[4]['InvDate'];
     $invRef4 = $arr_print[4]['InvRef'];
     $invNote4 = $arr_print[4]['InvNote'];
     $invAmount4 = $arr_print[4]['InvAmt'];
-    $invFundID4 = $arr_print[4]['InvFundID'];
-    $invFundNumber4 = $arr_print[4]['InvFundNumber'];
-    $invFundName4 = $arr_print[4]['InvFundLabel'];
   }
-  if (!empty($arr_print[5]['InvID'])) {
-    $invID5 = $arr_print[5]['InvID'];
+  if (!empty($arr_print[5]['InvDate'])) {
     $invDate5 = $arr_print[5]['InvDate'];
     $invRef5 = $arr_print[5]['InvRef'];
     $invNote5 = $arr_print[5]['InvNote'];
-    $invAmount5 = $arr_print[5]['InvAmt'];
-    $invFundID5 = $arr_print[5]['InvFundID'];
-    $invFundNumber5 = $arr_print[5]['InvFundNumber'];
-    $invFundName5 = $arr_print[5]['InvFundLabel'];
   }
-  if (!empty($arr_print[6]['InvID'])) {
-    $invID6 = $arr_print[6]['InvID'];
+  if (!empty($arr_print[6]['InvDate'])) {
     $invDate6 = $arr_print[6]['InvDate'];
     $invRef6 = $arr_print[6]['InvRef'];
     $invNote6 = $arr_print[6]['InvNote'];
     $invAmount6 = $arr_print[6]['InvAmt'];
-    $invFundID6 = $arr_print[6]['InvFundID'];
-    $invFundNumber6 = $arr_print[6]['InvFundNumber'];
-    $invFundName6 = $arr_print[6]['InvFundLabel'];
   }
-  if (!empty($arr_print[7]['InvID'])) {
-    $invID7 = $arr_print[7]['InvID'];
+  if (!empty($arr_print[7]['InvDate'])) {
     $invDate7 = $arr_print[7]['InvDate'];
     $invRef7 = $arr_print[7]['InvRef'];
     $invNote7 = $arr_print[7]['InvNote'];
     $invAmount7 = $arr_print[7]['InvAmt'];
-    $invFundID7 = $arr_print[7]['InvFundID'];
-    $invFundNumber7 = $arr_print[7]['InvFundNumber'];
-    $invFundName7 = $arr_print[7]['InvFundLabel'];
   }
-  if (!empty($arr_print[8]['InvID'])) {
-    $invID8 = $arr_print[8]['InvID'];
+  if (!empty($arr_print[8]['InvDate'])) {
     $invDate8 = $arr_print[8]['InvDate'];
     $invRef8 = $arr_print[8]['InvRef'];
     $invNote8 = $arr_print[8]['InvNote'];
     $invAmount8 = $arr_print[8]['InvAmt'];
-    $invFundID8 = $arr_print[8]['InvFundID'];
-    $invFundNumber8 = $arr_print[8]['InvFundNumber'];
-    $invFundName8 = $arr_print[8]['InvFundLabel'];
   }
-  if (!empty($arr_print[9]['InvID'])) {
-    $invID9 = $arr_print[9]['InvID'];
+  if (!empty($arr_print[9]['InvDate'])) {
     $invDate9 = $arr_print[9]['InvDate'];
     $invRef9 = $arr_print[9]['InvRef'];
     $invNote9 = $arr_print[9]['InvNote'];
     $invAmount9 = $arr_print[9]['InvAmt'];
-    $invFundID9 = $arr_print[9]['InvFundID'];
-    $invFundNumber9 = $arr_print[9]['InvFundNumber'];
-    $invFundName9 = $arr_print[9]['InvFundLabel'];
   }
 
   $claimDate = $arr_print['ClaimDate'];
@@ -275,49 +199,119 @@ function fcn_createPDF($logger, $apiKey, $apiUrl, $arr_print)
   unset($arr_print['ClaimSig']);
   unset($arr_print['ClaimTitle']);
 
-  /* 
-  // print $arr_print after values are unset
-  echo "Array after variables are unset to flatten<br>";
-  print_r($arr_print);
-  echo "<br><br>";
- */
+  $subKey0 = '';
+  $subValue0 = '';
+  $subNumber0 = '';
+  $subKey1 = '';
+  $subValue1 = '';
+  $subNumber1 = '';
+  $subKey2 = '';
+  $subValue2 = '';
+  $subNumber2 = '';
+  $subKey3 = '';
+  $subValue3 = '';
+  $subNumber3 = '';
+  $subKey4 = '';
+  $subValue4 = '';
+  $subNumber4 = '';
+  $subKey5 = '';
+  $subValue5 = '';
+  $subNumber5 = '';
+  $subKey6 = '';
+  $subValue6 = '';
+  $subNumber6 = '';
+  $subKey7 = '';
+  $subValue7 = '';
+  $subNumber7 = '';
+  $subKey8 = '';
+  $subValue8 = '';
+  $subNumber8 = '';
+  $subKey9 = '';
+  $subValue9 = '';
+  $subNumber9 = '';
+  $appropriation = '';
 
-
-  /*  
-$sum = [];
-$sum = array_reduce($arr_print, function($result, $item) {
-  if (!isset($result[$item['InvFundID']])) $result[$item['InvFundID']] = 0;
-  $result[$item['InvFundID']] += $item['InvAmt'];
-  return $result;
-}, array());
-echo "<br><br>";
-var_dump($sum);
-echo "<br><br>";
- */
-
-  /* 
-  // Get the subtoal amount and bank fund numbers
-  $subTotal = array();
-  $subTotal =  (array_reduce(
+  $sub = [];
+  $sub = array_reduce(
     $arr_print,
-    function ($carry, $row) {
-      $carry[$row['InvFundID']] = ($carry[$row['InvFundID']] ?? 0) + $row['InvAmt'];
-      return $carry;
-    }
-  ));
-  echo "<br><br>";
-  echo "Subtotal of invoice amounts and fund ID<br>";
-  print_r($subTotal); //Array ( [4] => 2683.79 [1] => 1159.88 [3] => 175.2 )
-  echo "<br><br>";
- */
-  /* 
-   $subTotal = array();
-  $subTotal = array_reduce($arr_print, function ($c, $i) {
-    $c[$i['InvFundID']] = ($c[$i['InvFundID']] ?? 0) + $i['InvAmt'];
-    return $c;
-  }, array());
-  print_r($subTotal); 
- */
+    function ($result, $item) {
+      if (!isset($result[$item['InvFundLabel']])) $result[$item['InvFundLabel']] = 0;
+      $result[$item['InvFundLabel']] += $item['InvAmt'];
+      return $result;
+    },
+    array()
+  );
+
+  $subKey = array_keys($sub);
+  $subValue = array_values($sub);
+
+
+  if (count($subKey) == 1) {
+    $appropriation = "$subKey[0]";
+  } else {
+    $appropriation = 'See Table Below';
+  }
+
+  if ( count($subKey) > 1 ) {
+    $subKey0 = $subKey[0];
+    $subValue0 = number_format($subValue[0], 2, '.', ',');
+    $subNumber0 = substr($subKey0, 0, 9);
+  }
+
+  if (isset($subKey[1])) {
+    $subKey1 = $subKey[1];
+    $subValue1 = number_format($subValue[1], 2, '.', ',');
+    $subNumber1 = substr($subKey1, 0, 9);
+  }
+
+  if (isset($subKey[2])) {
+    $subKey2 = $subKey[2];
+    $subValue2 = number_format($subValue[2], 2, '.', ',');
+    $subNumber2 = substr($subKey2, 0, 9);
+  }
+
+  if (isset($subKey[3])) {
+    $subKey3 = $subKey[3];
+    $subValue3 = number_format($subValue[3], 2, '.', ',');
+    $subNumber3 = substr($subKey3, 0, 9);
+  }
+
+  if (isset($subKey[4])) {
+    $subKey4 = $subKey[4];
+    $subValue4 = number_format($subValue[4], 2, '.', ',');
+    $subNumber4 = substr($subKey4, 0, 9);
+  }
+
+  if (isset($subKey[5])) {
+    $subKey5 = $subKey[5];
+    $subValue5 = number_format($subValue[5], 2, '.', ',');
+    $subNumber5 = substr($subKey5, 0, 9);
+  }
+
+  if (isset($subKey[6])) {
+    $subKey6 = $subKey[6];
+    $subValue6 = number_format($subValue[6], 2, '.', ',');
+    $subNumber6 = substr($subKey6, 0, 9);
+  }
+
+  if (isset($subKey[7])) {
+    $subKey7 = $subKey[7];
+    $subValue7 = number_format($subValue[7], 2, '.', ',');
+    $subNumber7 = substr($subKey7, 0, 9);
+  }
+
+  if (isset($subKey[8])) {
+    $subKey8 = $subKey[8];
+    $subValue8 = number_format($subValue[8], 2, '.', ',');
+    $subNumber8 = substr($subKey8, 0, 9);
+  }
+
+  if (isset($subKey[9])) {
+    $subKey9 = $subKey[9];
+    $subValue9 = number_format($subValue[9], 2, '.', ',');
+    $subNumber9 = substr($subKey9, 0, 9);
+  }
+
 
   // Print individual pdf
   include('inc_PDF_Content_1.php');
@@ -347,10 +341,10 @@ echo "<br><br>";
 
     // POST pdf file to dolibarr api
     fcn_postPDFDocument($logger, $apiKey, $apiUrl, $pdfFileName, "supplier_invoice", $ref, $attachment);
-    $logger->info("Claim " . $pdfFileName ." added to " . $ref);
+    $logger->info("Claim " . $pdfFileName . " added to " . $ref);
 
     //  Mark supplier invoice as PAID
-//    fcn_postSupplierPayment($logger, $apiKey, $apiUrl, $invoiceID);
-    $logger->info("Supplier invoice ID " . $invoiceID ." marked as PAID = ");
+    //    fcn_postSupplierPayment($logger, $apiKey, $apiUrl, $invoiceID);
+    $logger->info("Supplier invoice ID " . $invoiceID . " marked as PAID = ");
   }
 }

@@ -86,54 +86,54 @@ $tbl = <<<EOD
   <td align="center" width="23%"><b>Amount</b></td>
 </tr>
 <tr>
-  <td align="center">$invFundNumber99</td>
-  <td align="center">$invFundName99</td>
-  <td align="right">$invAmount99</td>
+  <td align="center">$subNumber0</td>
+  <td align="center">$subKey0</td>
+  <td align="right">$subValue0</td>
 </tr>
 <tr>
-  <td align="center">$invFundNumber1</td>
-  <td align="center">$invFundName1</td>
-  <td align="right">$invAmount1</td>
+  <td align="center">$subNumber1</td>
+  <td align="center">$subKey1</td>
+  <td align="right">$subValue1</td>
 </tr>
 <tr>
-  <td align="center">$invFundNumber2</td>
-  <td align="center">$invFundName2</td>
-  <td align="right">$invAmount2</td>
+  <td align="center">$subNumber2</td>
+  <td align="center">$subKey2</td>
+  <td align="right">$subValue2</td>
 </tr>
 <tr>
-  <td align="center">$invFundNumber3</td>
-  <td align="center">$invFundName3</td>
-  <td align="right">$invAmount3</td>
+  <td align="center">$subNumber3</td>
+  <td align="center">$subKey3</td>
+  <td align="right">$subValue3</td>
 </tr>
 <tr>
-  <td align="center">$invFundNumber4</td>
-  <td align="center">$invFundName4</td>
-  <td align="right">$invAmount4</td>
+  <td align="center">$subNumber4</td>
+  <td align="center">$subKey4</td>
+  <td align="right">$subValue4</td>
 </tr>
 <tr>
-  <td align="center">$invFundNumber5</td>
-  <td align="center">$invFundName5</td>
-  <td align="right">$invAmount5</td>
+  <td align="center">$subNumber5</td>
+  <td align="center">$subKey5</td>
+  <td align="right">$subValue5</td>
 </tr>
 <tr>
-  <td align="center">$invFundNumber6</td>
-  <td align="center">$invFundName6</td>
-  <td align="right">$invAmount6</td>
+  <td align="center">$subNumber6</td>
+  <td align="center">$subKey6</td>
+  <td align="right">$subValue6</td>
 </tr>
 <tr>
-  <td align="center">$invFundNumber7</td>
-  <td align="center">$invFundName7</td>
-  <td align="right">$invAmount7</td>
+  <td align="center">$subNumber7</td>
+  <td align="center">$subKey7</td>
+  <td align="right">$subValue7</td>
 </tr>
 <tr>
-  <td align="center">$invFundNumber8</td>
-  <td align="center">$invFundName8</td>
-  <td align="right">$invAmount8</td>
+  <td align="center">$subNumber8</td>
+  <td align="center">$subKey8</td>
+  <td align="right">$subValue8</td>
 </tr>
 <tr>
-  <td align="center">$invFundNumber9</td>
-  <td align="center">$invFundName9</td>
-  <td align="right">$invAmount9</td>
+  <td align="center">$subNumber9</td>
+  <td align="center">$subKey9</td>
+  <td align="right">$subValue9</td>
 </tr>
 <tr>
   <td></td>
