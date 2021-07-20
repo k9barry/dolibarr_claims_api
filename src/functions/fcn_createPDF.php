@@ -4,12 +4,7 @@ function fcn_createPDF($logger, $apiKey, $apiUrl, $arr_print)
 {
 
   $logger->info("Vendor " . $arr_print['VendName'] . " - create PDf");
-  /* 
-  // Full array print of $arr_print
-  echo "<br><br>Full array - arr_print<br>";
-  print_r($arr_print);
-  echo "<br><br>";
- */
+
   //Define variables
   $vendName = '';
   $vendAddress = '';
@@ -252,7 +247,7 @@ function fcn_createPDF($logger, $apiKey, $apiUrl, $arr_print)
     $appropriation = 'See Table Below';
   }
 
-  if ( count($subKey) > 1 ) {
+  if (count($subKey) > 1) {
     $subKey0 = $subKey[0];
     $subValue0 = number_format($subValue[0], 2, '.', ',');
     $subNumber0 = substr($subKey0, 0, 9);
