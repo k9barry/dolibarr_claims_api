@@ -4,8 +4,7 @@
 
 $pdf->AddPage($orientation = 'L', $format = 'LETTER');
 
-// set margins
-$pdf->SetMargins(PDF_MARGIN_LEFT, 0, PDF_MARGIN_RIGHT);
+$pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT, true);
 
 $pdf->SetAutoPageBreak(TRUE, 0);
 
@@ -69,6 +68,7 @@ $tbl = <<<EOD
 </tr>
 </table>
 EOD;
+
 $pdf->SetFontSize(8);
 $pdf->writeHTML($tbl, true, false, false, false, '');
 $pdf->Write(0, "      COST DISTRIBUTION LEDGER CLASSIFICATION", '', 0, 'L', true, 0, false, false, 0);
@@ -76,6 +76,10 @@ $pdf->Write(0, "    IF CLAIM PAID MOTOR VEHICLE HIGHWAY FUND", '', 0, 'L', true,
 
 $tbl = <<<EOD
 <table align="left" width="29%" border="0.25" cellpadding="1" cellspacing="0.25" nobr="true">
+<tr>
+  <td>
+  </td>
+</tr>
 <tr>
   <td align="center" width="22%"><b>Acct No.</b></td>
   <td align="center" width="55%"><b>Account Title</b></td>

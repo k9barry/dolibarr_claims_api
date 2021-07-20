@@ -137,10 +137,10 @@ function fcn_createPDF($logger, $apiKey, $apiUrl, $arr_print)
   $invNote0 = $arr_print[0]['InvNote'];
   $invAmount0 = $arr_print[0]['InvAmt'];
   $invFundID0 = $arr_print[0]['InvFundID'];
-  $invFundNumber0 = $arr_print[0]['Bank'][0]['ref'];
-  $invFundName0 = $arr_print[0]['Bank'][0]['label'];
+  $invFundNumber0 = $arr_print[0]['InvFundNumber'];
+  $invFundName0 = $arr_print[0]['InvFundLabel'];
 
-  $appropriation = $arr_print[0]['Bank'][0]['label'];
+  $appropriation = $arr_print[0]['InvFundLabel'];
 
   echo "<br>";
   echo "$invID0";
@@ -167,12 +167,12 @@ function fcn_createPDF($logger, $apiKey, $apiUrl, $arr_print)
     $invNote1 = $arr_print[1]['InvNote'];
     $invAmount1 = $arr_print[1]['InvAmt'];
     $invFundID1 = $arr_print[1]['InvFundID'];
-    $invFundNumber1 = $arr_print[1]['Bank'][0]['ref'];
-    $invFundName1 = $arr_print[1]['Bank'][0]['label'];
+    $invFundNumber1 = $arr_print[1]['InvFundNumber'];
+    $invFundName1 = $arr_print[1]['InvFundLabel'];
 
     $appropriation = 'See Table Below';
-    $invFundNumber99 = $arr_print[0]['Bank'][0]['ref'];
-    $invFundName99 = $arr_print[0]['Bank'][0]['label'];
+    $invFundNumber99 = $arr_print[0]['InvFundNumber'];
+    $invFundName99 = $arr_print[0]['InvFundLabel'];
     $invAmount99 = $arr_print[0]['InvAmt'];
   }
   if (!empty($arr_print[2]['InvID'])) {
@@ -182,8 +182,8 @@ function fcn_createPDF($logger, $apiKey, $apiUrl, $arr_print)
     $invNote2 = $arr_print[2]['InvNote'];
     $invAmount2 = $arr_print[2]['InvAmt'];
     $invFundID2 = $arr_print[2]['InvFundID'];
-    $invFundNumber2 = $arr_print[2]['Bank'][0]['ref'];
-    $invFundName2 = $arr_print[2]['Bank'][0]['label'];
+    $invFundNumber2 = $arr_print[2]['InvFundNumber'];
+    $invFundName2 = $arr_print[2]['InvFundLabel'];
   }
   if (!empty($arr_print[3]['InvID'])) {
     $invID3 = $arr_print[3]['InvID'];
@@ -192,8 +192,8 @@ function fcn_createPDF($logger, $apiKey, $apiUrl, $arr_print)
     $invNote3 = $arr_print[3]['InvNote'];
     $invAmount3 = $arr_print[3]['InvAmt'];
     $invFundID3 = $arr_print[3]['InvFundID'];
-    $invFundNumber3 = $arr_print[3]['Bank'][0]['ref'];
-    $invFundName3 = $arr_print[3]['Bank'][0]['label'];
+    $invFundNumber3 = $arr_print[3]['InvFundNumber'];
+    $invFundName3 = $arr_print[3]['InvFundLabel'];
   }
   if (!empty($arr_print[4]['InvID'])) {
     $invID4 = $arr_print[4]['InvID'];
@@ -202,8 +202,8 @@ function fcn_createPDF($logger, $apiKey, $apiUrl, $arr_print)
     $invNote4 = $arr_print[4]['InvNote'];
     $invAmount4 = $arr_print[4]['InvAmt'];
     $invFundID4 = $arr_print[4]['InvFundID'];
-    $invFundNumber4 = $arr_print[4]['Bank'][0]['ref'];
-    $invFundName4 = $arr_print[4]['Bank'][0]['label'];
+    $invFundNumber4 = $arr_print[4]['InvFundNumber'];
+    $invFundName4 = $arr_print[4]['InvFundLabel'];
   }
   if (!empty($arr_print[5]['InvID'])) {
     $invID5 = $arr_print[5]['InvID'];
@@ -212,8 +212,8 @@ function fcn_createPDF($logger, $apiKey, $apiUrl, $arr_print)
     $invNote5 = $arr_print[5]['InvNote'];
     $invAmount5 = $arr_print[5]['InvAmt'];
     $invFundID5 = $arr_print[5]['InvFundID'];
-    $invFundNumber5 = $arr_print[5]['Bank'][0]['ref'];
-    $invFundName5 = $arr_print[5]['Bank'][0]['label'];
+    $invFundNumber5 = $arr_print[5]['InvFundNumber'];
+    $invFundName5 = $arr_print[5]['InvFundLabel'];
   }
   if (!empty($arr_print[6]['InvID'])) {
     $invID6 = $arr_print[6]['InvID'];
@@ -222,8 +222,8 @@ function fcn_createPDF($logger, $apiKey, $apiUrl, $arr_print)
     $invNote6 = $arr_print[6]['InvNote'];
     $invAmount6 = $arr_print[6]['InvAmt'];
     $invFundID6 = $arr_print[6]['InvFundID'];
-    $invFundNumber6 = $arr_print[6]['Bank'][0]['ref'];
-    $invFundName6 = $arr_print[6]['Bank'][0]['label'];
+    $invFundNumber6 = $arr_print[6]['InvFundNumber'];
+    $invFundName6 = $arr_print[6]['InvFundLabel'];
   }
   if (!empty($arr_print[7]['InvID'])) {
     $invID7 = $arr_print[7]['InvID'];
@@ -232,8 +232,8 @@ function fcn_createPDF($logger, $apiKey, $apiUrl, $arr_print)
     $invNote7 = $arr_print[7]['InvNote'];
     $invAmount7 = $arr_print[7]['InvAmt'];
     $invFundID7 = $arr_print[7]['InvFundID'];
-    $invFundNumber7 = $arr_print[7]['Bank'][0]['ref'];
-    $invFundName7 = $arr_print[7]['Bank'][0]['label'];
+    $invFundNumber7 = $arr_print[7]['InvFundNumber'];
+    $invFundName7 = $arr_print[7]['InvFundLabel'];
   }
   if (!empty($arr_print[8]['InvID'])) {
     $invID8 = $arr_print[8]['InvID'];
@@ -242,8 +242,8 @@ function fcn_createPDF($logger, $apiKey, $apiUrl, $arr_print)
     $invNote8 = $arr_print[8]['InvNote'];
     $invAmount8 = $arr_print[8]['InvAmt'];
     $invFundID8 = $arr_print[8]['InvFundID'];
-    $invFundNumber8 = $arr_print[8]['Bank'][0]['ref'];
-    $invFundName8 = $arr_print[8]['Bank'][0]['label'];
+    $invFundNumber8 = $arr_print[8]['InvFundNumber'];
+    $invFundName8 = $arr_print[8]['InvFundLabel'];
   }
   if (!empty($arr_print[9]['InvID'])) {
     $invID9 = $arr_print[9]['InvID'];
@@ -252,8 +252,8 @@ function fcn_createPDF($logger, $apiKey, $apiUrl, $arr_print)
     $invNote9 = $arr_print[9]['InvNote'];
     $invAmount9 = $arr_print[9]['InvAmt'];
     $invFundID9 = $arr_print[9]['InvFundID'];
-    $invFundNumber9 = $arr_print[9]['Bank'][0]['ref'];
-    $invFundName9 = $arr_print[9]['Bank'][0]['label'];
+    $invFundNumber9 = $arr_print[9]['InvFundNumber'];
+    $invFundName9 = $arr_print[9]['InvFundLabel'];
   }
 
   $claimDate = $arr_print['ClaimDate'];

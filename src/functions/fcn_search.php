@@ -1,6 +1,6 @@
 <?php
 
-function search($array, $key, $value)
+function fcn_search($array, $key, $value)
 {
     $results = array();
 
@@ -10,7 +10,7 @@ function search($array, $key, $value)
         }
 
         foreach ($array as $subarray) {
-            $results = array_merge($results, search($subarray, $key, $value));
+            $results = array_merge($results, fcn_search($subarray, $key, $value));
         }
     }
 

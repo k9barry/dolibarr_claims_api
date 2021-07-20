@@ -18,16 +18,9 @@ function fcn_createPDFArray($logger, $apiKey, $apiUrl, $vendorID, $signature, $t
     );
     $logger->info("Vendor " . $vendorID . " - arr_vendor = " . json_encode($arr_vendor));
 
-
-    // GET bank account details
-    $logger->info("Vendor " . $vendorID . " - Get bank accounts information");
-    $arr_bankAccounts = fcn_getBankAccounts($logger, $apiKey, $apiUrl);
-    $arr_filteredBankAccount = array_column($arr_bankAccounts, 'label', 'id');
-    $logger->info("Vendor " . $vendorID . " - arr_filteredBankAccount = " . json_encode($arr_filteredBankAccount));
-
-
+    
     // GET invoice details
-    $logger->info("Vendor " . $vendorID . " - get invoice details");
+    $logger->info("Vendor " . $vendorID . " - get individual invoice details");
     $arr_filteredInvoiceInfo = fcn_getInvoiceInfo($logger, $apiKey, $apiUrl, $vendorID);
     for ($i = 0; $i < count($arr_filteredInvoiceInfo); $i++) {
         $arr_inv_detail[$i] = array(
@@ -38,8 +31,13 @@ function fcn_createPDFArray($logger, $apiKey, $apiUrl, $vendorID, $signature, $t
             "InvAmt" => substr($arr_filteredInvoiceInfo[$i]['total_ttc'], 0, -6),
             "InvFundID" => $arr_filteredInvoiceInfo[$i]['fk_account'],
             // use $arr_filteredInvoiceInfo[$i]['fk_account'] to get InvFundLabel and InvFundNumber
-            "Bank" => search($arr_bankAccounts, 'id', $arr_filteredInvoiceInfo[$i]['fk_account'])
+            $arr_getLabelandNumber = fcn_getBankAccountbyID($logger, $apiKey, $apiUrl, $arr_filteredInvoiceInfo[$i]['fk_account']),
+            "InvFundLabel" => $arr_getLabelandNumber['label'],
+            "InvFundNumber" => $arr_getLabelandNumber['ref'],
         );
+
+        $allowedKeys = ['InvID', 'InvDate', 'InvRef', 'InvNote', 'InvAmt', 'InvFundID', 'InvFundLabel', 'InvFundNumber'];
+        $arr_inv_detail[$i] = array_intersect_key($arr_inv_detail[$i], array_flip($allowedKeys));
     }
     $logger->info("Vendor " . $vendorID . " - all invoice details " . json_encode($arr_inv_detail));
 
@@ -55,16 +53,14 @@ function fcn_createPDFArray($logger, $apiKey, $apiUrl, $vendorID, $signature, $t
 
 
     // Join arrays to send to next function
+    $arr_print = $arr_vendor + $arr_inv_detail + $arr_signature;
     $logger->info("Vendor " . $vendorID . " - merge the arrays into arr_print");
-    $arr_print = $arr_vendor + $arr_inv_detail + $arr_signature + $arr_filteredBankAccount;
     //$logger->info("Vendor " . $vendorID . " arr_print = " . json_encode($arr_print));
 
     // Cleanup arrays
     unset($arr_vendor);
-    unset($arr_bankAccounts);
     unset($arr_filteredInvoiceInfo);
     unset($arr_signature);
-    unset($arr_filteredBankAccount);
     $logger->info("Vendor " . $vendorID . " - cleanup arrays no longer needed");
 
     return $arr_print;
