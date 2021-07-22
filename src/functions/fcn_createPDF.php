@@ -97,17 +97,17 @@ function fcn_createPDF($logger, $apiKey, $apiUrl, $arr_print)
   $total = '0';
 
   //Fill variables
-  $vendName = $arr_print['VendName'];
-  $vendAddress = $arr_print['VendAddress'];
-  $vendCity = $arr_print['VendCity'];
-  $vendState = $arr_print['VendState'];
-  $vendZip = $arr_print['VendZip'];
-  $vendCode = $arr_print['VendCode'];
+  $vendName = htmlspecialchars($arr_print['VendName']);
+  $vendAddress = htmlspecialchars($arr_print['VendAddress']);
+  $vendCity = htmlspecialchars($arr_print['VendCity']);
+  $vendState = htmlspecialchars($arr_print['VendState']);
+  $vendZip = htmlspecialchars($arr_print['VendZip']);
+  $vendCode = htmlspecialchars($arr_print['VendCode']);
 
-  $invDate0 = $arr_print[0]['InvDate'];
-  $invRef0 = $arr_print[0]['InvRef'];
-  $invNote0 = $arr_print[0]['InvNote'];
-  $invAmount0 = $arr_print[0]['InvAmt'];
+  $invDate0 = htmlspecialchars($arr_print[0]['InvDate']);
+  $invRef0 = htmlspecialchars($arr_print[0]['InvRef']);
+  $invNote0 = htmlspecialchars($arr_print[0]['InvNote']);
+  $invAmount0 = htmlspecialchars($arr_print[0]['InvAmt']);
 
   echo "<br>";
   echo "<br>";
@@ -175,12 +175,12 @@ function fcn_createPDF($logger, $apiKey, $apiUrl, $arr_print)
     $invAmount9 = $arr_print[9]['InvAmt'];
   }
 
-  $claimDate = $arr_print['ClaimDate'];
-  $claimSignature = $arr_print['ClaimSig'];
-  $claimTitle = $arr_print['ClaimTitle'];
+  $claimDate = htmlspecialchars($arr_print['ClaimDate']);
+  $claimSignature = htmlspecialchars($arr_print['ClaimSig']);
+  $claimTitle = htmlspecialchars($arr_print['ClaimTitle']);
 
   // get total amount
-  $total = array_sum(array_column($arr_print, "InvAmt"));
+  $total = htmlspecialchars(array_sum(array_column($arr_print, "InvAmt")));
   $total = '$' . number_format($total, 2, '.', ',');
 
   // unset $arr_print to flatten and get fund subtotals
@@ -248,63 +248,63 @@ function fcn_createPDF($logger, $apiKey, $apiUrl, $arr_print)
   }
 
   if (count($subKey) > 1) {
-    $subKey0 = $subKey[0];
-    $subValue0 = number_format($subValue[0], 2, '.', ',');
-    $subNumber0 = substr($subKey0, 0, 9);
+    $subKey0 = htmlspecialchars($subKey[0]);
+    $subValue0 = htmlspecialchars(number_format($subValue[0], 2, '.', ','));
+    $subNumber0 = htmlspecialchars(substr($subKey0, 0, 9));
   }
 
   if (isset($subKey[1])) {
-    $subKey1 = $subKey[1];
-    $subValue1 = number_format($subValue[1], 2, '.', ',');
-    $subNumber1 = substr($subKey1, 0, 9);
+    $subKey1 = htmlspecialchars($subKey[1]);
+    $subValue1 = htmlspecialchars(number_format($subValue[1], 2, '.', ','));
+    $subNumber1 = htmlspecialchars(substr($subKey1, 0, 9));
   }
 
   if (isset($subKey[2])) {
-    $subKey2 = $subKey[2];
-    $subValue2 = number_format($subValue[2], 2, '.', ',');
-    $subNumber2 = substr($subKey2, 0, 9);
+    $subKey2 = htmlspecialchars($subKey[2]);
+    $subValue2 = htmlspecialchars(number_format($subValue[2], 2, '.', ','));
+    $subNumber2 = htmlspecialchars(substr($subKey2, 0, 9));
   }
 
   if (isset($subKey[3])) {
-    $subKey3 = $subKey[3];
-    $subValue3 = number_format($subValue[3], 2, '.', ',');
-    $subNumber3 = substr($subKey3, 0, 9);
+    $subKey3 = htmlspecialchars($subKey[3]);
+    $subValue3 = htmlspecialchars(number_format($subValue[3], 2, '.', ','));
+    $subNumber3 = htmlspecialchars(substr($subKey3, 0, 9));
   }
 
   if (isset($subKey[4])) {
-    $subKey4 = $subKey[4];
-    $subValue4 = number_format($subValue[4], 2, '.', ',');
-    $subNumber4 = substr($subKey4, 0, 9);
+    $subKey4 = htmlspecialchars($subKey[4]);
+    $subValue4 = htmlspecialchars(number_format($subValue[4], 2, '.', ','));
+    $subNumber4 = htmlspecialchars(substr($subKey4, 0, 9));
   }
 
   if (isset($subKey[5])) {
-    $subKey5 = $subKey[5];
-    $subValue5 = number_format($subValue[5], 2, '.', ',');
-    $subNumber5 = substr($subKey5, 0, 9);
+    $subKey5 = htmlspecialchars($subKey[5]);
+    $subValue5 = htmlspecialchars(number_format($subValue[5], 2, '.', ','));
+    $subNumber5 = htmlspecialchars(substr($subKey5, 0, 9));
   }
 
   if (isset($subKey[6])) {
-    $subKey6 = $subKey[6];
-    $subValue6 = number_format($subValue[6], 2, '.', ',');
-    $subNumber6 = substr($subKey6, 0, 9);
+    $subKey6 = htmlspecialchars($subKey[6]);
+    $subValue6 = htmlspecialchars(number_format($subValue[6], 2, '.', ','));
+    $subNumber6 = htmlspecialchars(substr($subKey6, 0, 9));
   }
 
   if (isset($subKey[7])) {
-    $subKey7 = $subKey[7];
-    $subValue7 = number_format($subValue[7], 2, '.', ',');
-    $subNumber7 = substr($subKey7, 0, 9);
+    $subKey7 = htmlspecialchars($subKey[7]);
+    $subValue7 = htmlspecialchars(number_format($subValue[7], 2, '.', ','));
+    $subNumber7 = htmlspecialchars(substr($subKey7, 0, 9));
   }
 
   if (isset($subKey[8])) {
-    $subKey8 = $subKey[8];
-    $subValue8 = number_format($subValue[8], 2, '.', ',');
-    $subNumber8 = substr($subKey8, 0, 9);
+    $subKey8 = htmlspecialchars($subKey[8]);
+    $subValue8 = htmlspecialchars(number_format($subValue[8], 2, '.', ','));
+    $subNumber8 = htmlspecialchars(substr($subKey8, 0, 9));
   }
 
   if (isset($subKey[9])) {
-    $subKey9 = $subKey[9];
-    $subValue9 = number_format($subValue[9], 2, '.', ',');
-    $subNumber9 = substr($subKey9, 0, 9);
+    $subKey9 = htmlspecialchars($subKey[9]);
+    $subValue9 = htmlspecialchars(number_format($subValue[9], 2, '.', ','));
+    $subNumber9 = htmlspecialchars(substr($subKey9, 0, 9));
   }
 
 
