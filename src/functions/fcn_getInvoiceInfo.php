@@ -14,9 +14,9 @@ function fcn_getInvoiceInfo($logger, $apiKey, $apiUrl, $thirdparty_ids = "")
     $arrInvoiceInfo = json_decode($arrInvoiceInfo, true);
 
     if (isset($arrInvoiceInfo["error"]) && $arrInvoiceInfo["error"]["code"] >= "300") {
-        echo "<br><br>No UNPAID supplier invoices found - ". json_encode($arrInvoiceInfo["error"]["message"]);
-		$logger->critical(json_encode($arrInvoiceInfo));
+        echo "<br><br>No UNPAID supplier invoices found - " . json_encode($arrInvoiceInfo["error"]["message"]);
+        $logger->critical(json_encode($arrInvoiceInfo));
         exit;
-	}
-	return $arrInvoiceInfo;
+    }
+    return $arrInvoiceInfo;
 }

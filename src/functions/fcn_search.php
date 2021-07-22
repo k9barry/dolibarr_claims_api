@@ -13,6 +13,5 @@ function fcn_search($array, $key, $value)
             $results = array_merge($results, fcn_search($subarray, $key, $value));
         }
     }
-
     return $results;
 }

@@ -1,7 +1,6 @@
 <?php
 
 // Function to create an array to print claim from one vendor id at a time
-
 function fcn_createPDFArray($logger, $apiKey, $apiUrl, $vendorID, $signature, $title)
 {
 

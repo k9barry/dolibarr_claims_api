@@ -339,7 +339,7 @@ function fcn_createPDF($logger, $apiKey, $apiUrl, $arr_print)
     $logger->info("Claim " . $pdfFileName . " added to " . $ref);
 
     //  Mark supplier invoice as PAID
-    //    fcn_postSupplierPayment($logger, $apiKey, $apiUrl, $invoiceID);
+    fcn_postSupplierPayment($logger, $apiKey, $apiUrl, $invoiceID);
     $logger->info("Supplier invoice ID " . $invoiceID . " marked as PAID = ");
   }
 }

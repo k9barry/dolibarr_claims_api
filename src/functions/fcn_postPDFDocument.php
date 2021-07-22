@@ -18,7 +18,7 @@ function fcn_postPDFDocument($logger, $apiKey, $apiUrl, $pdfFileName, $modulepar
     $arrPostDocument = json_decode($arrPostDocument, true);
 
     if (isset($arrPostDocument["error"]) && $arrPostDocument["error"]["code"] >= "300") {
-        echo "<br>Error in fcn_postPDFDocument - ". json_encode($arrPostDocument["error"]["message"]);
+        echo "<br>Error in fcn_postPDFDocument - " . json_encode($arrPostDocument["error"]["message"]);
         $logger->critical(json_encode($arrPostDocument));
         exit;
     }
