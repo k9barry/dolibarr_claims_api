@@ -54,7 +54,7 @@ function fcn_createPDFArray($logger, $apiKey, $apiUrl, $vendorID, $signature, $t
     // Join arrays to send to next function
     $arr_print = $arr_vendor + $arr_inv_detail + $arr_signature;
     $logger->info("Vendor " . $vendorID . " - merge the arrays into arr_print");
-    $logger->info("Vendor " . $vendorID . " $arr_print = " . json_encode($arr_print));
+    $logger->info("Vendor " . $vendorID . " arr_print = " . json_encode($arr_print));
 
     // Cleanup arrays
     unset($arr_vendor);

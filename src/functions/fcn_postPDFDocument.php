@@ -3,6 +3,14 @@
 // POST file to dolibarr api
 function fcn_postPDFDocument($logger, $apiKey, $apiUrl, $pdfFileName, $modulepart, $ref, $attachment)
 {
+
+    $remove = "Content-Type: application/pdf;";
+    
+    if (strpos($attachment, $remove) !== false) {
+        list($encode, $base64string) = explode($remove, $attachment);
+        $attachment = "$base64string";
+    }
+
     $apiEndpoint = "documents/upload";
     $parameters = [
         "filename" => "$pdfFileName",

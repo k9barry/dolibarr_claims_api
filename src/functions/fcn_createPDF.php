@@ -320,8 +320,11 @@ function fcn_createPDF($logger, $apiKey, $apiUrl, $arr_print)
   $logger->info("PDF claim created at = " . $pdfPathFile);
 
   //ob_end_clean();
+  //$attachment = __DIR__ . "\\tmp\\" . $pdfFileName;
+  //$attachment = $pdf->Output($pdfPathFile, "F");
   $attachment = $pdf->Output($pdfFileName, "E");
-  $logger->info("Base64 encoded PDF claim created with name of = " . $pdfFileName);
+  $logger->info("PDF claim created with path and name of = " . $attachment);
+  //$logger->info("Base64 encoded PDF claim created with name of = " . $pdfFileName);
 
   // get invID numbers included in this claim
   $invIDNumbersInClaim = array_column($arr_print, 'InvID');
@@ -339,7 +342,7 @@ function fcn_createPDF($logger, $apiKey, $apiUrl, $arr_print)
     $logger->info("Claim " . $pdfFileName . " added to " . $ref);
 
     //  Mark supplier invoice as PAID
-    fcn_postSupplierPayment($logger, $apiKey, $apiUrl, $invoiceID);
+    //fcn_postSupplierPayment($logger, $apiKey, $apiUrl, $invoiceID);
     $logger->info("Supplier invoice ID " . $invoiceID . " marked as PAID = ");
   }
 }
