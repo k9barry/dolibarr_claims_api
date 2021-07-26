@@ -356,7 +356,11 @@ function fcn_createPDF($logger, $apiKey, $apiUrl, $arr_print)
     $logger->info("Claim " . $pdfPathFile . " added to " . $ref);
 
     //  Mark supplier invoice as PAID
-    //fcn_postSupplierPayment($logger, $apiKey, $apiUrl, $invoiceID);
-    $logger->info("Supplier invoice ID " . $invoiceID . " marked as PAID = ");
+    if ($_GET['paid'] == 1) {
+      fcn_postSupplierPayment($logger, $apiKey, $apiUrl, $invoiceID);
+      $logger->info("Supplier invoice ID " . $invoiceID . " marked as PAID = ");
+    } else if ($_GET['paid'] == 0) {
+      $logger->info("Supplier invoice ID " . $invoiceID . " NOT marked as PAID = ");
+    }
   }
 }

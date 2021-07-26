@@ -4,6 +4,13 @@ error_reporting(E_ALL & ~E_NOTICE);
 // Initial entry point for program
 include 'src/include.php';
 
+// Get POST variable from index.php
+if (isset($_GET['paid']) && $_GET['paid'] == 1) {
+    $logger->info("Mark invoices as PAID _GET['paid'] variable = " . $_GET['paid']);
+} else {
+    $logger->info("Leave invoices as UN-PAID _GET['paid'] variable = " . $_GET['paid']);
+}
+
 // GET supplier invoices sorted by fk_soc with status of unpaid
 $arrAllUnpaidInvoices = fcn_getAllUnpaidInvoices($logger, $apiKey, $apiUrl);
 //$logger->info("arrAllUnpaidInvoices = " . json_encode($arrAllUnpaidInvoices));
