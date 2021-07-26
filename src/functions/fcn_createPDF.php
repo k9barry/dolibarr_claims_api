@@ -121,58 +121,58 @@ function fcn_createPDF($logger, $apiKey, $apiUrl, $arr_print)
   echo "<br>";
 
   if (!empty($arr_print[1]['InvDate'])) {
-    $invDate1 = $arr_print[1]['InvDate'];
-    $invRef1 = $arr_print[1]['InvRef'];
-    $invNote1 = $arr_print[1]['InvNote'];
-    $invAmount1 = $arr_print[1]['InvAmt'];
+    $invDate1 = htmlspecialchars($arr_print[1]['InvDate']);
+    $invRef1 = htmlspecialchars($arr_print[1]['InvRef']);
+    $invNote1 = htmlspecialchars($arr_print[1]['InvNote']);
+    $invAmount1 = htmlspecialchars($arr_print[1]['InvAmt']);
   }
-
   if (!empty($arr_print[2]['InvDate'])) {
-    $invDate2 = $arr_print[2]['InvDate'];
-    $invRef2 = $arr_print[2]['InvRef'];
-    $invNote2 = $arr_print[2]['InvNote'];
-    $invAmount2 = $arr_print[2]['InvAmt'];
+    $invDate2 = htmlspecialchars($arr_print[2]['InvDate']);
+    $invRef2 = htmlspecialchars($arr_print[2]['InvRef']);
+    $invNote2 = htmlspecialchars($arr_print[2]['InvNote']);
+    $invAmount2 = htmlspecialchars($arr_print[2]['InvAmt']);
   }
   if (!empty($arr_print[3]['InvDate'])) {
-    $invDate3 = $arr_print[3]['InvDate'];
-    $invRef3 = $arr_print[3]['InvRef'];
-    $invNote3 = $arr_print[3]['InvNote'];
-    $invAmount3 = $arr_print[3]['InvAmt'];
+    $invDate3 = htmlspecialchars($arr_print[3]['InvDate']);
+    $invRef3 = htmlspecialchars($arr_print[3]['InvRef']);
+    $invNote3 = htmlspecialchars($arr_print[3]['InvNote']);
+    $invAmount3 = htmlspecialchars($arr_print[3]['InvAmt']);
   }
   if (!empty($arr_print[4]['InvDate'])) {
-    $invDate4 = $arr_print[4]['InvDate'];
-    $invRef4 = $arr_print[4]['InvRef'];
-    $invNote4 = $arr_print[4]['InvNote'];
-    $invAmount4 = $arr_print[4]['InvAmt'];
+    $invDate4 = htmlspecialchars($arr_print[4]['InvDate']);
+    $invRef4 = htmlspecialchars($arr_print[4]['InvRef']);
+    $invNote4 = htmlspecialchars($arr_print[4]['InvNote']);
+    $invAmount4 = htmlspecialchars($arr_print[4]['InvAmt']);
   }
   if (!empty($arr_print[5]['InvDate'])) {
-    $invDate5 = $arr_print[5]['InvDate'];
-    $invRef5 = $arr_print[5]['InvRef'];
-    $invNote5 = $arr_print[5]['InvNote'];
+    $invDate5 = htmlspecialchars($arr_print[5]['InvDate']);
+    $invRef5 = htmlspecialchars($arr_print[5]['InvRef']);
+    $invNote5 = htmlspecialchars($arr_print[5]['InvNote']);
+    $invAmount5 = htmlspecialchars($arr_print[5]['InvAmt']);
   }
   if (!empty($arr_print[6]['InvDate'])) {
-    $invDate6 = $arr_print[6]['InvDate'];
-    $invRef6 = $arr_print[6]['InvRef'];
-    $invNote6 = $arr_print[6]['InvNote'];
-    $invAmount6 = $arr_print[6]['InvAmt'];
+    $invDate6 = htmlspecialchars($arr_print[6]['InvDate']);
+    $invRef6 = htmlspecialchars($arr_print[6]['InvRef']);
+    $invNote6 = htmlspecialchars($arr_print[6]['InvNote']);
+    $invAmount6 = htmlspecialchars($arr_print[6]['InvAmt']);
   }
   if (!empty($arr_print[7]['InvDate'])) {
-    $invDate7 = $arr_print[7]['InvDate'];
-    $invRef7 = $arr_print[7]['InvRef'];
-    $invNote7 = $arr_print[7]['InvNote'];
-    $invAmount7 = $arr_print[7]['InvAmt'];
+    $invDate7 = htmlspecialchars($arr_print[7]['InvDate']);
+    $invRef7 = htmlspecialchars($arr_print[7]['InvRef']);
+    $invNote7 = htmlspecialchars($arr_print[7]['InvNote']);
+    $invAmount7 = htmlspecialchars($arr_print[7]['InvAmt']);
   }
   if (!empty($arr_print[8]['InvDate'])) {
-    $invDate8 = $arr_print[8]['InvDate'];
-    $invRef8 = $arr_print[8]['InvRef'];
-    $invNote8 = $arr_print[8]['InvNote'];
-    $invAmount8 = $arr_print[8]['InvAmt'];
+    $invDate8 = htmlspecialchars($arr_print[8]['InvDate']);
+    $invRef8 = htmlspecialchars($arr_print[8]['InvRef']);
+    $invNote8 = htmlspecialchars($arr_print[8]['InvNote']);
+    $invAmount8 = htmlspecialchars($arr_print[8]['InvAmt']);
   }
   if (!empty($arr_print[9]['InvDate'])) {
-    $invDate9 = $arr_print[9]['InvDate'];
-    $invRef9 = $arr_print[9]['InvRef'];
-    $invNote9 = $arr_print[9]['InvNote'];
-    $invAmount9 = $arr_print[9]['InvAmt'];
+    $invDate9 = htmlspecialchars($arr_print[9]['InvDate']);
+    $invRef9 = htmlspecialchars($arr_print[9]['InvRef']);
+    $invNote9 = htmlspecialchars($arr_print[9]['InvNote']);
+    $invAmount9 = htmlspecialchars($arr_print[9]['InvAmt']);
   }
 
   $claimDate = htmlspecialchars($arr_print['ClaimDate']);
@@ -197,33 +197,44 @@ function fcn_createPDF($logger, $apiKey, $apiUrl, $arr_print)
   $subKey0 = '';
   $subValue0 = '';
   $subNumber0 = '';
+  $subBank0 = '';
   $subKey1 = '';
   $subValue1 = '';
   $subNumber1 = '';
+  $subBank1 = '';
   $subKey2 = '';
   $subValue2 = '';
   $subNumber2 = '';
+  $subBank2 = '';
   $subKey3 = '';
   $subValue3 = '';
   $subNumber3 = '';
+  $subBank3 = '';
   $subKey4 = '';
   $subValue4 = '';
   $subNumber4 = '';
+  $subBank4 = '';
   $subKey5 = '';
   $subValue5 = '';
   $subNumber5 = '';
+  $subBank5 = '';
   $subKey6 = '';
   $subValue6 = '';
   $subNumber6 = '';
+  $subBank6 = '';
   $subKey7 = '';
   $subValue7 = '';
   $subNumber7 = '';
+  $subBank7 = '';
   $subKey8 = '';
   $subValue8 = '';
   $subNumber8 = '';
+  $subBank8 = '';
   $subKey9 = '';
   $subValue9 = '';
   $subNumber9 = '';
+  $subBank9 = '';
+
   $appropriation = '';
 
   $sub = [];
@@ -240,71 +251,77 @@ function fcn_createPDF($logger, $apiKey, $apiUrl, $arr_print)
   $subKey = array_keys($sub);
   $subValue = array_values($sub);
 
-
   if (count($subKey) == 1) {
-    $appropriation = "$subKey[0]";
+    $appropriation = "".htmlspecialchars($arr_print[0]['InvFundBank'])." ".$subKey[0]."";
   } else {
     $appropriation = 'See Table Below';
-  }
-
-  if (count($subKey) > 1) {
     $subKey0 = htmlspecialchars($subKey[0]);
     $subValue0 = htmlspecialchars(number_format($subValue[0], 2, '.', ','));
     $subNumber0 = htmlspecialchars(substr($subKey0, 0, 9));
+    $subBank0 = htmlspecialchars($arr_print[0]['InvFundBank']);
   }
 
   if (isset($subKey[1])) {
     $subKey1 = htmlspecialchars($subKey[1]);
     $subValue1 = htmlspecialchars(number_format($subValue[1], 2, '.', ','));
     $subNumber1 = htmlspecialchars(substr($subKey1, 0, 9));
+    $subBank1 = htmlspecialchars($arr_print[1]['InvFundBank']);
   }
 
   if (isset($subKey[2])) {
     $subKey2 = htmlspecialchars($subKey[2]);
     $subValue2 = htmlspecialchars(number_format($subValue[2], 2, '.', ','));
     $subNumber2 = htmlspecialchars(substr($subKey2, 0, 9));
+    $subBank2 = htmlspecialchars($arr_print[2]['InvFundBank']);
   }
 
   if (isset($subKey[3])) {
     $subKey3 = htmlspecialchars($subKey[3]);
     $subValue3 = htmlspecialchars(number_format($subValue[3], 2, '.', ','));
     $subNumber3 = htmlspecialchars(substr($subKey3, 0, 9));
+    $subBank3 = htmlspecialchars($arr_print[3]['InvFundBank']);
   }
 
   if (isset($subKey[4])) {
     $subKey4 = htmlspecialchars($subKey[4]);
     $subValue4 = htmlspecialchars(number_format($subValue[4], 2, '.', ','));
     $subNumber4 = htmlspecialchars(substr($subKey4, 0, 9));
+    $subBank4 = htmlspecialchars($arr_print[4]['InvFundBank']);
   }
 
   if (isset($subKey[5])) {
     $subKey5 = htmlspecialchars($subKey[5]);
     $subValue5 = htmlspecialchars(number_format($subValue[5], 2, '.', ','));
     $subNumber5 = htmlspecialchars(substr($subKey5, 0, 9));
+    $subBank5 = htmlspecialchars($arr_print[5]['InvFundBank']);
   }
 
   if (isset($subKey[6])) {
     $subKey6 = htmlspecialchars($subKey[6]);
     $subValue6 = htmlspecialchars(number_format($subValue[6], 2, '.', ','));
     $subNumber6 = htmlspecialchars(substr($subKey6, 0, 9));
+    $subBank6 = htmlspecialchars($arr_print[6]['InvFundBank']);
   }
 
   if (isset($subKey[7])) {
     $subKey7 = htmlspecialchars($subKey[7]);
     $subValue7 = htmlspecialchars(number_format($subValue[7], 2, '.', ','));
     $subNumber7 = htmlspecialchars(substr($subKey7, 0, 9));
+    $subBank7 = htmlspecialchars($arr_print[7]['InvFundBank']);
   }
 
   if (isset($subKey[8])) {
     $subKey8 = htmlspecialchars($subKey[8]);
     $subValue8 = htmlspecialchars(number_format($subValue[8], 2, '.', ','));
     $subNumber8 = htmlspecialchars(substr($subKey8, 0, 9));
+    $subBank8 = htmlspecialchars($arr_print[8]['InvFundBank']);
   }
 
   if (isset($subKey[9])) {
     $subKey9 = htmlspecialchars($subKey[9]);
     $subValue9 = htmlspecialchars(number_format($subValue[9], 2, '.', ','));
     $subNumber9 = htmlspecialchars(substr($subKey9, 0, 9));
+    $subBank9 = htmlspecialchars($arr_print[9]['InvFundBank']);
   }
 
 
@@ -321,7 +338,7 @@ function fcn_createPDF($logger, $apiKey, $apiUrl, $arr_print)
 
   //ob_end_clean();
   $attachment = $pdf->Output($pdfFileName, "E");
-  $logger->info("Base64 encoded PDF claim created with name of = " . $pdfFileName);
+  //$logger->info("Base64 encoded PDF file = " . $attachment);
 
   // get invID numbers included in this claim
   $invIDNumbersInClaim = array_column($arr_print, 'InvID');
@@ -336,10 +353,10 @@ function fcn_createPDF($logger, $apiKey, $apiUrl, $arr_print)
 
     // POST pdf file to dolibarr api
     fcn_postPDFDocument($logger, $apiKey, $apiUrl, $pdfFileName, "supplier_invoice", $ref, $attachment);
-    $logger->info("Claim " . $pdfFileName . " added to " . $ref);
+    $logger->info("Claim " . $pdfPathFile . " added to " . $ref);
 
     //  Mark supplier invoice as PAID
-    fcn_postSupplierPayment($logger, $apiKey, $apiUrl, $invoiceID);
+    //fcn_postSupplierPayment($logger, $apiKey, $apiUrl, $invoiceID);
     $logger->info("Supplier invoice ID " . $invoiceID . " marked as PAID = ");
   }
 }
