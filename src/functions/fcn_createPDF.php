@@ -251,14 +251,10 @@ function fcn_createPDF($logger, $apiKey, $apiUrl, $arr_print)
   $subKey = array_keys($sub);
   $subValue = array_values($sub);
 
-
   if (count($subKey) == 1) {
-    $appropriation = "$subKey[0]";
+    $appropriation = "".htmlspecialchars($arr_print[0]['InvFundBank'])." ".$subKey[0]."";
   } else {
     $appropriation = 'See Table Below';
-  }
-
-  if (count($subKey) > 1) {
     $subKey0 = htmlspecialchars($subKey[0]);
     $subValue0 = htmlspecialchars(number_format($subValue[0], 2, '.', ','));
     $subNumber0 = htmlspecialchars(substr($subKey0, 0, 9));
@@ -341,11 +337,8 @@ function fcn_createPDF($logger, $apiKey, $apiUrl, $arr_print)
   $logger->info("PDF claim created at = " . $pdfPathFile);
 
   //ob_end_clean();
-  //$attachment = __DIR__ . "\\tmp\\" . $pdfFileName;
-  //$attachment = $pdf->Output($pdfPathFile, "F");
   $attachment = $pdf->Output($pdfFileName, "E");
-  $logger->info("PDF claim created with path and name of = " . $attachment);
-  //$logger->info("Base64 encoded PDF claim created with name of = " . $pdfFileName);
+  //$logger->info("Base64 encoded PDF file = " . $attachment);
 
   // get invID numbers included in this claim
   $invIDNumbersInClaim = array_column($arr_print, 'InvID');
@@ -360,7 +353,7 @@ function fcn_createPDF($logger, $apiKey, $apiUrl, $arr_print)
 
     // POST pdf file to dolibarr api
     fcn_postPDFDocument($logger, $apiKey, $apiUrl, $pdfFileName, "supplier_invoice", $ref, $attachment);
-    $logger->info("Claim " . $pdfFileName . " added to " . $ref);
+    $logger->info("Claim " . $pdfPathFile . " added to " . $ref);
 
     //  Mark supplier invoice as PAID
     //fcn_postSupplierPayment($logger, $apiKey, $apiUrl, $invoiceID);
