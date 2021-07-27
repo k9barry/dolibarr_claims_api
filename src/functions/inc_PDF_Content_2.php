@@ -15,32 +15,32 @@ $pdf->setPrintFooter(false);
 // set default monospaced font
 $pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
 
-$pdf->Ln(9);  //Space down from top
+$pdf->Ln(0);  //Space down from top
 $linedown2 = "48";
 $pdf->Line(18, ($linedown2+0), 85, ($linedown2+0),); //Vendor name
-$pdf->Line(18, ($linedown2+3.5), 85, ($linedown2+3.5),); //Vendor address
-$pdf->Line(18, ($linedown2+7), 85, ($linedown2+7),); //City State Zip
-$pdf->Line(18, ($linedown2+14), 85, ($linedown2+14),); //Total
-$pdf->Line(18, ($linedown2+28), 85, ($linedown2+28),); //Appropriation
+$pdf->Line(18, ($linedown2+4.5), 85, ($linedown2+4.5),); //Vendor address
+$pdf->Line(18, ($linedown2+9), 85, ($linedown2+9),); //City State Zip
+$pdf->Line(18, ($linedown2+18), 85, ($linedown2+18),); //Total
+$pdf->Line(20, ($linedown2+32), 85, ($linedown2+32),); //Appropriation
 
 $tbl = <<<EOD
 <table align="center" width="31%" border="0" cellpadding="0" cellspacing="" nobr="true">
 <tr>
   <td align="center">
-    <h4>$vendCode</h4>
+    <h2>$vendCode</h2>
   </td>
 </tr>
 <tr>
   <td></td>
 </tr>
 <tr>
-  <td align="center"><small>VOUCHER NO. ______________________      WARRANT NO. ___________________</small></td>
+  <td align="center"><small>VOUCHER NO. _________________    WARRANT NO. ________________</small></td>
 </tr>
 <tr>
   <td></td>
 </tr>
 <tr>
-  <td align="center">$vendName</td>
+  <td align="center"><h3>$vendName</h3></td>
 </tr>
 <tr>
   <td align="center">$vendAddress</td>
@@ -58,10 +58,10 @@ $tbl = <<<EOD
   <td></td>
 </tr>
 <tr>
-  <td align="center"><h4>ON ACCOUNT OF APPROPRIATION</h4></td>
+  <td align="center"><h6>ON ACCOUNT OF APPROPRIATION</h6></td>
 </tr>
 <tr>
-  <td align="center"><h4>FOR</h4></td>
+  <td align="center"><h6>FOR</h6></td>
 </tr>
 <tr>
   <td align="center">$appropriation</td>
@@ -69,10 +69,11 @@ $tbl = <<<EOD
 </table>
 EOD;
 
-$pdf->SetFontSize(8);
+$pdf->SetFontSize(10);
 $pdf->writeHTML($tbl, true, false, false, false, '');
-$pdf->Write(0, "      COST DISTRIBUTION LEDGER CLASSIFICATION", '', 0, 'L', true, 0, false, false, 0);
-$pdf->Write(0, "    IF CLAIM PAID MOTOR VEHICLE HIGHWAY FUND", '', 0, 'L', true, 0, false, false, 0);
+$pdf->SetFontSize(8);
+$pdf->Write(0, "     COST DISTRIBUTION LEDGER CLASSIFICATION", '', 0, 'L', true, 0, false, false, 0);
+$pdf->Write(0, "   IF CLAIM PAID MOTOR VEHICLE HIGHWAY FUND", '', 0, 'L', true, 0, false, false, 0);
 
 $tbl = <<<EOD
 <table align="left" width="29%" border="0.25" cellpadding="1" cellspacing="0.25" nobr="true">
@@ -86,54 +87,54 @@ $tbl = <<<EOD
   <td align="center" width="23%"><b>Amount</b></td>
 </tr>
 <tr>
-  <td align="center">$subNumber0</td>
-  <td align="center">$subBank0 $subKey0</td>
-  <td align="right">$subValue0</td>
+  <td align="center"><font size="8">$subNumber0</font></td>
+  <td align="center"><font size="8">$subBank0 $subKey0</font></td>
+  <td align="right"><font size="8">$subValue0</font></td>
 </tr>
 <tr>
-  <td align="center">$subNumber1</td>
-  <td align="center">$subBank1 $subKey1</td>
-  <td align="right">$subValue1</td>
+  <td align="center"><font size="8">$subNumber1</font></td>
+  <td align="center"><font size="8">$subBank1 $subKey1</font></td>
+  <td align="right"><font size="8">$subValue1</font></td>
 </tr>
 <tr>
-  <td align="center">$subNumber2</td>
-  <td align="center">$subBank2 $subKey2</td>
-  <td align="right">$subValue2</td>
+  <td align="center"><font size="8">$subNumber2</font></td>
+  <td align="center"><font size="8">$subBank2 $subKey2</font></td>
+  <td align="right"><font size="8">$subValue2</font></td>
 </tr>
 <tr>
-  <td align="center">$subNumber3</td>
-  <td align="center">$subBank3 $subKey3</td>
-  <td align="right">$subValue3</td>
+  <td align="center"><font size="8">$subNumber3</font></td>
+  <td align="center"><font size="8">$subBank3 $subKey3</font></td>
+  <td align="right"><font size="8">$subValue3</font></td>
 </tr>
 <tr>
-  <td align="center">$subNumber4</td>
-  <td align="center">$subBank4 $subKey4</td>
-  <td align="right">$subValue4</td>
+  <td align="center"><font size="8">$subNumber4</font></td>
+  <td align="center"><font size="8">$subBank4 $subKey4</font></td>
+  <td align="right"><font size="8">$subValue4</font></td>
 </tr>
 <tr>
-  <td align="center">$subNumber5</td>
-  <td align="center">$subBank5 $subKey5</td>
-  <td align="right">$subValue5</td>
+  <td align="center"><font size="8">$subNumber5</font></td>
+  <td align="center"><font size="8">$subBank5 $subKey5</font></td>
+  <td align="right"><font size="8">$subValue5</font></td>
 </tr>
 <tr>
-  <td align="center">$subNumber6</td>
-  <td align="center">$subBank6 $subKey6</td>
-  <td align="right">$subValue6</td>
+  <td align="center"><font size="8">$subNumber6</font></td>
+  <td align="center"><font size="8">$subBank6 $subKey6</font></td>
+  <td align="right"><font size="8">$subValue6</font></td>
 </tr>
 <tr>
-  <td align="center">$subNumber7</td>
-  <td align="center">$subBank7 $subKey7</td>
-  <td align="right">$subValue7</td>
+  <td align="center"><font size="8">$subNumber7</font></td>
+  <td align="center"><font size="8">$subBank7 $subKey7</font></td>
+  <td align="right"><font size="8">$subValue7</font></td>
 </tr>
 <tr>
-  <td align="center">$subNumber8</td>
-  <td align="center">$subBank8 $subKey8</td>
-  <td align="right">$subValue8</td>
+  <td align="center"><font size="8">$subNumber8</font></td>
+  <td align="center"><font size="8">$subBank8 $subKey8</font></td>
+  <td align="right"><font size="8">$subValue8</font></td>
 </tr>
 <tr>
-  <td align="center">$subNumber9</td>
-  <td align="center">$subBank9 $subKey9</td>
-  <td align="right">$subValue9</td>
+  <td align="center"><font size="8">$subNumber9</font></td>
+  <td align="center"><font size="8">$subBank9 $subKey9</font></td>
+  <td align="right"><font size="8">$subValue9</font></td>
 </tr>
 <tr>
   <td></td>
@@ -167,12 +168,12 @@ $tbl = <<<EOD
 </tr>
 </table>
 EOD;
-$pdf->SetFontSize(7.5);
+$pdf->SetFontSize(10);
 $pdf->writeHTML($tbl, true, false, false, false, '');
-$pdf->writeHTMLCell(70, 0, 100, 40, 'ALLOWED _______________________, ________', 0, 0, 0, 0, 'C');
-$pdf->writeHTMLCell(70, 0, 100, 50, 'IN THE SUM OF $__________________________', 0, 0, 0, 0, 'C');
-$pdf->writeHTMLCell(70, 0, 100, 60, '_________________________________________', 0, 0, 0, 0, 'C');
-$pdf->writeHTMLCell(70, 0, 100, 70, '_________________________________________', 0, 0, 0, 0, 'C');
+$pdf->writeHTMLCell(70, 0, 100, 40, 'ALLOWED __________________, ________', 0, 0, 0, 0, 'C');
+$pdf->writeHTMLCell(70, 0, 100, 50, 'IN THE SUM OF $_____________________', 0, 0, 0, 0, 'C');
+$pdf->writeHTMLCell(70, 0, 100, 60, '____________________________________', 0, 0, 0, 0, 'C');
+$pdf->writeHTMLCell(70, 0, 100, 70, '____________________________________', 0, 0, 0, 0, 'C');
 $pdf->writeHTMLCell(70, 0, 100, 80, 'Board of County Commissioners', 0, 0, 0, 0, 'C');
 
 /* END PDF================================================================================ */
