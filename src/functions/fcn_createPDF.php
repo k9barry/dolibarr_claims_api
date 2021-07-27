@@ -255,72 +255,72 @@ function fcn_createPDF($logger, $apiKey, $apiUrl, $arr_print)
     $appropriation = "".htmlspecialchars($arr_print[0]['InvFundBank'])." ".$subKey[0]."";
   } else {
     $appropriation = 'See Table Below';
-    $subKey0 = htmlspecialchars($subKey[0]);
+    $subKey0 = htmlspecialchars(substr($subKey[0], 10, 15));
     $subValue0 = htmlspecialchars(number_format($subValue[0], 2, '.', ','));
-    $subNumber0 = htmlspecialchars(substr($subKey0, 0, 9));
+    $subNumber0 = htmlspecialchars(substr($subKey[0], 0, 9));
     $subBank0 = htmlspecialchars($arr_print[0]['InvFundBank']);
   }
 
   if (isset($subKey[1])) {
-    $subKey1 = htmlspecialchars($subKey[1]);
+    $subKey1 = htmlspecialchars(substr($subKey[1], 10, 15));
     $subValue1 = htmlspecialchars(number_format($subValue[1], 2, '.', ','));
-    $subNumber1 = htmlspecialchars(substr($subKey1, 0, 9));
+    $subNumber1 = htmlspecialchars(substr($subKey[1], 0, 9));
     $subBank1 = htmlspecialchars($arr_print[1]['InvFundBank']);
   }
 
   if (isset($subKey[2])) {
-    $subKey2 = htmlspecialchars($subKey[2]);
+    $subKey2 = htmlspecialchars(substr($subKey[2], 10, 15));
     $subValue2 = htmlspecialchars(number_format($subValue[2], 2, '.', ','));
-    $subNumber2 = htmlspecialchars(substr($subKey2, 0, 9));
+    $subNumber2 = htmlspecialchars(substr($subKey[2], 0, 9));
     $subBank2 = htmlspecialchars($arr_print[2]['InvFundBank']);
   }
 
   if (isset($subKey[3])) {
-    $subKey3 = htmlspecialchars($subKey[3]);
+    $subKey3 = htmlspecialchars(substr($subKey[3], 10, 15));
     $subValue3 = htmlspecialchars(number_format($subValue[3], 2, '.', ','));
-    $subNumber3 = htmlspecialchars(substr($subKey3, 0, 9));
+    $subNumber3 = htmlspecialchars(substr($subKey[3], 0, 9));
     $subBank3 = htmlspecialchars($arr_print[3]['InvFundBank']);
   }
 
   if (isset($subKey[4])) {
-    $subKey4 = htmlspecialchars($subKey[4]);
+    $subKey4 = htmlspecialchars(substr($subKey[4], 10, 15));
     $subValue4 = htmlspecialchars(number_format($subValue[4], 2, '.', ','));
-    $subNumber4 = htmlspecialchars(substr($subKey4, 0, 9));
+    $subNumber4 = htmlspecialchars(substr($subKey[4], 0, 9));
     $subBank4 = htmlspecialchars($arr_print[4]['InvFundBank']);
   }
 
   if (isset($subKey[5])) {
-    $subKey5 = htmlspecialchars($subKey[5]);
+    $subKey5 = htmlspecialchars(substr($subKey[5], 10, 15));
     $subValue5 = htmlspecialchars(number_format($subValue[5], 2, '.', ','));
-    $subNumber5 = htmlspecialchars(substr($subKey5, 0, 9));
+    $subNumber5 = htmlspecialchars(substr($subKey[5], 0, 9));
     $subBank5 = htmlspecialchars($arr_print[5]['InvFundBank']);
   }
 
   if (isset($subKey[6])) {
-    $subKey6 = htmlspecialchars($subKey[6]);
+    $subKey6 = htmlspecialchars(substr($subKey[6], 10, 15));
     $subValue6 = htmlspecialchars(number_format($subValue[6], 2, '.', ','));
-    $subNumber6 = htmlspecialchars(substr($subKey6, 0, 9));
+    $subNumber6 = htmlspecialchars(substr($subKey[6], 0, 9));
     $subBank6 = htmlspecialchars($arr_print[6]['InvFundBank']);
   }
 
   if (isset($subKey[7])) {
-    $subKey7 = htmlspecialchars($subKey[7]);
+    $subKey7 = htmlspecialchars(substr($subKey[7], 10, 15));
     $subValue7 = htmlspecialchars(number_format($subValue[7], 2, '.', ','));
-    $subNumber7 = htmlspecialchars(substr($subKey7, 0, 9));
+    $subNumber7 = htmlspecialchars(substr($subKey[7], 0, 9));
     $subBank7 = htmlspecialchars($arr_print[7]['InvFundBank']);
   }
 
   if (isset($subKey[8])) {
-    $subKey8 = htmlspecialchars($subKey[8]);
+    $subKey8 = htmlspecialchars(substr($subKey[8], 10, 15));
     $subValue8 = htmlspecialchars(number_format($subValue[8], 2, '.', ','));
-    $subNumber8 = htmlspecialchars(substr($subKey8, 0, 9));
+    $subNumber8 = htmlspecialchars(substr($subKey[8], 0, 9));
     $subBank8 = htmlspecialchars($arr_print[8]['InvFundBank']);
   }
 
   if (isset($subKey[9])) {
-    $subKey9 = htmlspecialchars($subKey[9]);
+    $subKey9 = htmlspecialchars(substr($subKey[9], 10, 15));
     $subValue9 = htmlspecialchars(number_format($subValue[9], 2, '.', ','));
-    $subNumber9 = htmlspecialchars(substr($subKey9, 0, 9));
+    $subNumber9 = htmlspecialchars(substr($subKey[9], 0, 9));
     $subBank9 = htmlspecialchars($arr_print[9]['InvFundBank']);
   }
 
