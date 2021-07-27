@@ -7,15 +7,22 @@ function fcn_createPDFArray($logger, $apiKey, $apiUrl, $vendorID, $signature, $t
     $logger->info("Vendor " . $vendorID . " - create PDf array started");
     // GET supplier information
     $arr_supplierInfo = fcn_getSupplierInfo($logger, $apiKey, $apiUrl, $vendorID);
+
+    // GET Vendor State Name from State ID
+    $arr_getStateName = fcn_getStateNamebyID($logger, $apiKey, $apiUrl, $arr_supplierInfo['state_id']);
+    $StateName = $arr_getStateName['code'];
+
     $arr_vendor = array(
         'VendName' => $arr_supplierInfo['name'],
         'VendAddress' => $arr_supplierInfo['address'],
         'VendCity' => $arr_supplierInfo['town'],
-        'VendState' => $arr_supplierInfo['state_code'],
+        'VendState' => $StateName,
         'VendZip' => $arr_supplierInfo['zip'],
         'VendCode' => $arr_supplierInfo['code_fournisseur']
     );
     $logger->info("Vendor " . $vendorID . " - arr_vendor = " . json_encode($arr_vendor));
+
+
 
 
     // GET invoice details
