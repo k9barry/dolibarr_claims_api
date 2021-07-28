@@ -31,7 +31,7 @@ function fcn_createPDFArray($logger, $apiKey, $apiUrl, $vendorID, $signature, $t
     for ($i = 0; $i < count($arr_filteredInvoiceInfo); $i++) {
         $arr_inv_detail[$i] = array(
             "InvID" => $arr_filteredInvoiceInfo[$i]['id'],
-            "InvDate" => date('m/d/Y', $arr_filteredInvoiceInfo[$i]['datec']),
+            "InvDate" => date('m/d/Y', $arr_filteredInvoiceInfo[$i]['date']),
             "InvRef" => substr($arr_filteredInvoiceInfo[$i]['ref_supplier'], 0, 25),
             "InvNote" => substr($arr_filteredInvoiceInfo[$i]['note_public'], 0, 38),
             "InvAmt" => substr($arr_filteredInvoiceInfo[$i]['total_ttc'], 0, -6),
