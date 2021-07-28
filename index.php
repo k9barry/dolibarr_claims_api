@@ -23,7 +23,7 @@ $table .= "</tr>";
 
 for ($i = 0; $i < count($unpaid); $i++) {
     $name = $unpaid[$i]['socnom'];
-    $date =  date('m/d/Y', $unpaid[$i]['datec']);
+    $date =  date('m/d/Y', $unpaid[$i]['date']);
     $invoice = substr($unpaid[$i]['ref_supplier'], 0, 25);
     $note = substr($unpaid[$i]['note_public'], 0, 38);
     $amount = substr($unpaid[$i]['total_ttc'], 0, -6);
