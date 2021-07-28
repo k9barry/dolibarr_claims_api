@@ -4,6 +4,10 @@
 
 function fcn_postSupplierPayment($logger, $apiKey, $apiUrl, $invoiceID)
 {
+    
+    // GET fk_account 
+    $arrInvoicebyID = fcn_getInvoicebyID($logger, $apiKey, $apiUrl, $invoiceID);
+    $fk_account = $arrInvoicebyID['fk_account'];
 
     // Retrieve payment type filter by code = "CL"
     $claimPymtTypeID = fcn_getClaimPymtTypeID($logger, $apiKey, $apiUrl);
@@ -17,7 +21,7 @@ function fcn_postSupplierPayment($logger, $apiKey, $apiUrl, $invoiceID)
         "datepaye" => "$unixCurrentTime",
         "payment_mode_id" => "$claimPymtTypeID",
         "closepaidinvoices" => "yes",
-        "accountid" => "1",  // get bank account from supplier invoice
+        "accountid" => "$fk_account",
         "num_payment" => "",
         "comment" => "Paid by claim using the API",
         "chqemetteur" => "",
