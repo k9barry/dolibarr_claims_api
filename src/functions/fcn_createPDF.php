@@ -337,7 +337,7 @@ function fcn_createPDF($logger, $apiKey, $apiUrl, $arr_print)
   $logger->info("PDF claim created at = " . $pdfPathFile);
 
   //ob_end_clean();
-  $attachment = $pdf->Output($pdfFileName, "E");
+  $attachmentpath = $pdfPathFile;
   //$logger->info("Base64 encoded PDF file = " . $attachment);
 
   // get invID numbers included in this claim
@@ -352,7 +352,7 @@ function fcn_createPDF($logger, $apiKey, $apiUrl, $arr_print)
     $ref = $getLevel1Name[0]['level1name'];
 
     // POST pdf file to dolibarr api
-    fcn_postPDFDocument($logger, $apiKey, $apiUrl, $pdfFileName, "supplier_invoice", $ref, $attachment);
+    fcn_postPDFDocument($logger, $apiKey, $apiUrl, $pdfFileName, "supplier_invoice", $ref, $attachmentpath);
     $logger->info("Claim " . $pdfPathFile . " added to " . $ref);
 
     //  Mark supplier invoice as PAID
