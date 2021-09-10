@@ -2,7 +2,7 @@
 
 /* First page================================================================================ */
 // Include the main TCPDF library (search for installation path).
-require_once("./vendor/tecnickcom/tcpdf/examples/tcpdf_include.php");
+require_once("/var/www/html/dolibarr/htdocs/includes/tecnickcom/tcpdf/tcpdf.php");
 
 if (!class_exists('TCPDF')) {
   die('TCPDF could not be loaded. Abort!');
@@ -187,4 +187,4 @@ $pdf->Line(73, $linedown, 135, $linedown,);  //Signature line
 $pdf->Line(148, $linedown, 190, $linedown,);  //Title line
 $pdf->SetLineWidth(0.1);
 $pdf->Line(16, 190, 200, 190,);  //Cut line
-$pdf->Image($claimSignature, 70, ($linedown-9), 60, '', '', '', '', false, 300); //Signature image
+$pdf->Image($claimSignature, 70, ($linedown-13), 65, '', '', '', '', false, 300); //Signature image

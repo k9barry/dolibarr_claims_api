@@ -1,4 +1,5 @@
 src/.env
+src/.env-bak
 src/log/*
 !src/log/.gitkeep 
 src/functions/tmp/*

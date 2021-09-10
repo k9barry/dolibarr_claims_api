@@ -19,12 +19,22 @@ $logger->pushProcessor(new IntrospectionProcessor());
 $logger->info('+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++');
 $logger->info('Claim logger is now ready'); // You can now use your logger
 
+// Copy conifig.txt to ./src/.env if exists
+if (file_exists("/var/www/html/dolibarr/documents/ecm/Claim Configuration/config.txt")) {
+    $logger->info("config.txt exists and is being copied to ./src/.env");
+    if (file_exists("./src/.env")) {
+        rename('./src/.env', './src/.env-bak');
+    }
+    copy('/var/www/html/dolibarr/documents/ecm/Claim Configuration/config.txt', '/var/www/html/dolibarr/htdocs/custom/dolibarr_claims_api/src/.env');
+}
+
 // Load phpdotenv variables if exists
 if (!file_exists("./src/.env")) {
     echo "Please rename the .env-dev file to .env and change the necessary settings";
     $logger->info("phpDotenv library failed please rename the .env-dev file to .env and change the necessary settings");
     exit();
 }
+
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 $dotenv->required(['apiKey', 'apiUrl']);
