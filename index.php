@@ -9,6 +9,16 @@ $unpaid = fcn_getAllUnpaidInvoices($logger, $apiKey, $apiUrl);
 
 $table = "<!DOCTYPE html>";
 $table .= "<html>";
+$table .= "<head>";
+$table .= "<style>";
+
+$table .= "table { width: 100%; }";
+$table .= "table, th, td { border: 1px solid black; }";
+$table .= "th { background-color: yellow; }";
+$table .= "td:empty {  background-color: red; }";
+
+$table .= "</style>";
+$table .= "</head>";
 $table .= "<body>";
 $table .= "<h1 align='center'>Claims</h1>";
 $table .= "<table width='100%' border='1.5' cellpadding='4' cellspacing='0.5' nobr='true'>";
@@ -21,16 +31,22 @@ $table .= "<th align='center' width='10%'>Amount</th>";
 $table .= "<th align='center' width='30%'>Account</th>";
 $table .= "</tr>";
 
+
+//Set alert to '0' or '1'
+$alert = 0;
+
 for ($i = 0; $i < count($unpaid); $i++) {
     $name = $unpaid[$i]['socnom'];
     $date =  date('m/d/Y', $unpaid[$i]['date']);
     $invoice = substr($unpaid[$i]['ref_supplier'], 0, 25);
+    if ($invoice == "") { $alert = 1; }
     $note = substr($unpaid[$i]['note_public'], 0, 38);
     $amount = substr($unpaid[$i]['total_ttc'], 0, -6);
+    if ($amount <= 0) { $alert = 1; }
     $id = $unpaid[$i]['fk_account'];
+    if (empty($id)) { $alert = 1; }
     $bank = fcn_getBankAccountbyID($logger, $apiKey, $apiUrl, $id);
-    $acct = $bank['bank'] . " " . $bank['label'];
-
+    $acct = $bank['bank'] . "" . $bank['label'];
 
     $table .= "<tr>";
     $table .= "<td align='center'>" . $name . "</td>";
@@ -48,10 +64,16 @@ $table .= "</table>";
 $table .= "<br><br>";
 $table .= "<h3 align='center'>##########################################################################################################################</h1>";
 
-$table .= "<form align='center' action='./claims.php' method='get'>Do you want the above listed claims marked as PAID?  ";
-$table .= "<button name='paid' type='submit' value=1>YES</button>  <button name='paid' type='submit' value=0>NO</button>";
-$table .= "</form>";
+if ($alert === 0) {
+    $table .= "<form align='center' action='./claims.php' method='get'>Do you want the above listed claims marked as PAID?  ";
+    $table .= "<button name='paid' type='submit' value=1>MARK INVOICES PAID</button>  <button name='paid' type='submit' value=0>VIEW CLAIMS</button>";
+    $table .= "</form>";
+} else {
+    $table .= "<form align='center' action='./claims.php' method='get'>Please correct the fields highlighted in red! You can NOT mark these invoices as PAID!  ";
+    $table .= "<button name='paid' type='submit' value=0>VIEW CLAIMS</button>";
+    $table .= "</form>";
+}
 
-$table.="</html>";
 $table.="</body>";
+$table.="</html>";
 print $table;
