@@ -73,7 +73,7 @@ if ($alert === 0) {
     $table .= "<button name='paid' type='submit' value=0>VIEW CLAIMS</button>";
     $table .= "</form>";
 }
-
+<li><iframe src="http://10.200.0.252/compta/bank/list.php" width="188" height="258" scrolling="no" style="overflow:hidden; margin-top:-4px; margin-left:-4px; border:none;"></iframe></li>
 $table.="</body>";
 $table.="</html>";
 print $table;
