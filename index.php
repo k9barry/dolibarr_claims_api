@@ -1,6 +1,23 @@
 <?php
 error_reporting(E_ALL & ~E_NOTICE);
 
+// This file located at /var/www/html/dolibarr/htdocs/custom/dolibarr_claims_api
+
+// Security check
+require '../../main.inc.php';
+
+if ($user->socid) {
+        $socid = $user->socid;
+}
+
+$allowed = 0;
+if (!empty($user->rights->accounting->chartofaccount)) {
+        $allowed = 1; // Dictionary with list of banks accounting account allowed to manager of chart account
+}
+if (!$allowed) {
+        $result = restrictedArea($user, 'banque');
+}
+
 // Initial entry point for program
 include 'src/include.php';
 
@@ -42,7 +59,7 @@ for ($i = 0; $i < count($unpaid); $i++) {
     if ($invoice == "") { $alert = 1; }
     $note = substr($unpaid[$i]['note_public'], 0, 38);
     $amount = substr($unpaid[$i]['total_ttc'], 0, -6);
-    if ($amount <= 0) { $alert = 1; }
+    if ($amount == 0) { $alert = 1; }
     $id = $unpaid[$i]['fk_account'];
     if (empty($id)) { $alert = 1; }
     $bank = fcn_getBankAccountbyID($logger, $apiKey, $apiUrl, $id);
@@ -73,7 +90,7 @@ if ($alert === 0) {
     $table .= "<button name='paid' type='submit' value=0>VIEW CLAIMS</button>";
     $table .= "</form>";
 }
-$table.="<li><iframe src='http://10.200.0.252/compta/bank/list.php' width='100%' height='500' scrolling='yes' style='overflow:hidden; margin-top:-4px; margin-left:-4px; border:none;'></iframe></li>";
+$table.="<li><iframe src='http://10.200.0.252/compta/bank/list.php?optioncss=print' width='100%' height='500' scrolling='yes' style='overflow:hidden; margin-top:-4px; margin-left:-4px; border:none;'></iframe></>
 $table.="</body>";
 $table.="</html>";
 print $table;
